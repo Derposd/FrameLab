@@ -822,6 +822,59 @@
     <!-- ============ Navigation ============ -->
     <!-- One sidebar: brand, game switcher, the pages of the selected game, the PC card. DataContext of the TabControl is MainViewModel.
          The content area keeps a 40 px strip on top for the window caption, so pages never scroll under the caption buttons. -->
+    <Style x:Key="SpecApplyButton" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Height" Value="60" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="{StaticResource Text}" />
+        <Setter Property="Foreground" Value="{StaticResource Bg}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="14,8" />
+    </Style>
+    <Style x:Key="SpecUndoButton" TargetType="Button" BasedOn="{StaticResource Ghost}">
+        <Setter Property="Height" Value="52" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="{StaticResource Text}" />
+        <Setter Property="BorderThickness" Value="2" />
+    </Style>
+    <Style x:Key="ProfileChoice" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{StaticResource Subtle}" />
+        <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Background="Transparent">
+                        <Grid>
+                            <ContentPresenter VerticalAlignment="Center" />
+                            <TextBlock x:Name="arrow" Text="→" FontSize="28" FontWeight="SemiBold" Foreground="{DynamicResource Accent}"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource Text}" />
+                            <Setter TargetName="arrow" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource Text}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="TabControl" x:Key="SideNav">
         <Setter Property="Background" Value="{StaticResource Bg}" />
         <Setter Property="BorderThickness" Value="0" />

@@ -56,8 +56,6 @@
   .hud-top .dots i { background:#cfc9b8; }
   .strip { background:var(--panel); }
   .feature,.card,.faq-item { border-radius:2px; }
-  .gallery { background:#cbc4b7; border:1px solid var(--line2); border-radius:2px; }
-  .gallery img { background:#c5beb1; }
   .feature,.tile,.faq-item { background:rgba(235,229,218,.55); border-color:var(--line); }
   .k,.acc { color:var(--a); }
   .strip,.strip .wrap { background:var(--bg2); }
@@ -225,17 +223,6 @@
   .ping .j { font-family: var(--mono); font-size: 12px; color: var(--subtle); }
   .ping .bad .ms { color: var(--warn); }
 
-  /* gallery */
-  .gallery { border-radius: 22px; border: 1px solid var(--line); background: var(--panel); overflow: hidden; }
-  .tabs { display: flex; gap: 4px; padding: 10px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tabs button { flex: none; padding: 9px 16px; border-radius: 10px; font-weight: 650; font-size: 15px; color: var(--muted); }
-  .tabs button:hover { color: var(--text); }
-  .tabs button[aria-selected="true"] { color: var(--text); background: rgba(var(--a-rgb), .14); box-shadow: inset 0 0 0 1px rgba(var(--a-rgb), .35); }
-  .stage { position: relative; aspect-ratio: 1600 / 1067; background: #0b0c10; }
-  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .35s; }
-  .stage img.on { opacity: 1; }
-  .cap { padding: 16px 22px; font-size: 15px; color: var(--muted); border-top: 1px solid var(--line); min-height: 58px; }
 
   /* honest */
   .honest { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
@@ -352,9 +339,6 @@
   .tile,.feature,.faq-item,.card { background:var(--panel); border-color:var(--line); border-radius:4px; }
   .tile { background:linear-gradient(160deg,#e2dcd0,#d7d0c4); }
   .tile:hover,.guides a:hover { border-color:var(--line2); }
-  .gallery { background:#c8c1b4; border-color:var(--line2); border-radius:4px; }
-  .stage { background:#c5beb1; }
-  .tabs button[aria-selected="true"] { background:rgba(var(--a-rgb),.12); box-shadow:inset 0 0 0 1px rgba(var(--a-rgb),.42); }
   .strip,.guides { border-color:var(--line); }
   .log { background:#383832; color:#d1cabc; }
   .codes code { color:#913f34; }
@@ -367,11 +351,10 @@
   .no li::before { background:rgba(167,71,56,.12); }
   .rv { transform:translateY(14px); filter:blur(2px); transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1),filter .65s ease; }
   .rv.in { filter:none; }
-  .tile,.feature,.gallery,.guides a,.faq-item { transition:transform .28s ease,border-color .28s ease,background-color .28s ease,box-shadow .28s ease; }
+  .tile,.feature,.guides a,.faq-item { transition:transform .28s ease,border-color .28s ease,background-color .28s ease,box-shadow .28s ease; }
   .tile:hover,.feature:hover,.guides a:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(45,40,32,.08); }
   .btn { transition:transform .2s ease,background-color .25s ease,border-color .25s ease,box-shadow .25s ease; }
   .btn:active { transform:translateY(1px) scale(.99); }
-  .gallery { box-shadow:0 12px 30px rgba(45,40,32,.08); }
   @keyframes hero-enter { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
   @keyframes hud-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-5px); } }
   @media (prefers-reduced-motion:no-preference) {
@@ -392,7 +375,7 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#"><img src="img/logo.png" alt="">FrameLab<small class="ver-tag">v<span class="ver">1.6.1</span></small></a>
-    <div class="links"><a href="#how">Как работает</a><a href="#features">Возможности</a><a href="#screens">Скриншоты</a><a href="#honest">Честно</a><a href="#guides">Гайды</a><a href="#faq">Вопросы</a></div>
+    <div class="links"><a href="#how">Как работает</a><a href="#features">Возможности</a><a href="#honest">Честно</a><a href="#guides">Гайды</a><a href="#faq">Вопросы</a></div>
     <a class="btn btn-primary" href="https://github.com/Derposd/v60/releases/latest/download/FrameLab-Setup.exe">Скачать</a>
   </div>
 </nav>
@@ -553,37 +536,6 @@
     <div class="feature rv" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center">
       <div><h3>Одна сцена для повторяемого сравнения</h3><p>FrameLab отрисовывает встроенную 3D-сцену с одинаковой нагрузкой, измеряет FPS и 1% low и сохраняет результаты до и после. Не нужно искать карту или повторять маршрут в игре.</p><p><strong>Честное ограничение:</strong> синтетический результат сравнивает настройки на этом ПК и не предсказывает FPS конкретной игры. Частота монитора может ограничить показания. Для реальной игры остаётся замер PresentMon.</p></div>
       <img src="img/benchmark-scene.svg" loading="lazy" width="1440" height="900" alt="Иллюстрация встроенной сцены и результата синтетического теста" style="border:1px solid var(--line2)">
-    </div>
-  </div>
-</section>
-
-<section id="screens" style="padding-top:0">
-  <div class="wrap">
-    <div class="head rv"><div class="k">Скриншоты</div><h2>Так выглядит <span class="acc">программа</span></h2></div>
-    <div class="gallery rv">
-      <div class="tabs" role="tablist">
-        <button role="tab" aria-selected="true" data-i="0">Синтетический тест</button>
-        <button role="tab" aria-selected="false" data-i="1">План оптимизации</button>
-        <button role="tab" aria-selected="false" data-i="2">Главная</button>
-        <button role="tab" aria-selected="false" data-i="3">GTA RP: режимы</button>
-        <button role="tab" aria-selected="false" data-i="4">GTA RP: для РП</button>
-        <button role="tab" aria-selected="false" data-i="5">Редуксы</button>
-        <button role="tab" aria-selected="false" data-i="6">Проблемы</button>
-        <button role="tab" aria-selected="false" data-i="7">Вылеты</button>
-        <button role="tab" aria-selected="false" data-i="8">Монитор матча</button>
-      </div>
-      <div class="stage">
-        <img class="on" src="img/benchmark-scene.svg" width="1440" height="900" alt="Синтетический бенчмарк FrameLab: встроенная фиксированная 3D-сцена и сравнение результатов до и после" data-cap="Новый синтетический бенчмарк: одна и та же встроенная 3D-сцена, FPS и 1% low. Это ориентир для сравнения на вашем ПК, а не обещание FPS в конкретной игре.">
-        <img src="img/cs2-plan.jpg" loading="lazy" width="1600" height="1067" alt="План оптимизации CS2: пресеты графики и параметры запуска" data-cap="Шаг «План»: пресет под ваш профиль ПК, параметры запуска, настройки Windows. У каждого пункта — эффект и статус.">
-        <img src="img/cs2-home.jpg" loading="lazy" width="1600" height="1067" alt="Главная FrameLab: оптимизация в один клик" data-cap="«Главная»: оптимизация в один клик для всех установленных игр, состояние ПК, ускорение на время игры. Слева — переключатель Dota 2 / CS2 / GTA RP.">
-        <img src="img/gta-modes.jpg" loading="lazy" width="1600" height="1067" alt="Режимы графики GTA V для RP-проектов" data-cap="GTA RP: режим под ваш ПК выбран заранее, видно, какой включён сейчас. Меняется только settings.xml, копия сохраняется.">
-        <img src="img/gta-roleplay.jpg" loading="lazy" width="1600" height="1067" alt="Режимы «РП красиво» и «Гибрид»" data-cap="Два режима для РП: «РП красиво» — почти максимум без лишнего, «Гибрид» — красиво и без просадок. «Вернуть как было» — одной кнопкой.">
-        <img src="img/gta-redux.jpg" loading="lazy" width="1600" height="1067" alt="Проверка редукса перед установкой" data-cap="«Редуксы»: перед установкой видно, что встанет, что заблокировано и почему. ASI, DLL, ScriptHook и ReShade не ставятся никогда.">
-        <img src="img/cs2-issues.jpg" loading="lazy" width="1600" height="1067" alt="Проблемы CS2 с пошаговыми решениями" data-cap="«Проблемы»: поиск по симптомам, причина, шаги и исправления в один клик.">
-        <img src="img/dota-crash.jpg" loading="lazy" width="1600" height="1067" alt="Диагностика вылетов Dota 2" data-cap="«Вылеты и сбои»: журнал Windows, дампы и логи игры, очистка кешей шейдеров, проверка файлов.">
-        <img src="img/dota-monitor.jpg" loading="lazy" width="1600" height="1067" alt="Монитор матча" data-cap="«Монитор матча»: нажмите «Начать запись» перед игрой — после матча будет график и причина просадок.">
-      </div>
-      <div class="cap" id="cap">Шаг «План»: пресет под ваш профиль ПК, параметры запуска, настройки Windows. У каждого пункта — эффект и статус.</div>
     </div>
   </div>
 </section>
@@ -815,14 +767,6 @@
   }
   function loop() { draw(); if (!still) setTimeout(() => requestAnimationFrame(loop), 50); }
   addEventListener('resize', () => { size(); pts = []; });
-
-  // Screenshot gallery tabs.
-  const tabs = document.querySelectorAll('.tabs button'), imgs = document.querySelectorAll('.stage img'), cap = document.getElementById('cap');
-  tabs.forEach(b => b.addEventListener('click', () => {
-    tabs.forEach(x => x.setAttribute('aria-selected', String(x === b)));
-    imgs.forEach((im, i) => im.classList.toggle('on', i === +b.dataset.i));
-    cap.textContent = imgs[+b.dataset.i].dataset.cap;
-  }));
 
   // Reveal on scroll.
   if ('IntersectionObserver' in window) {

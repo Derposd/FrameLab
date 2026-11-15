@@ -2,11 +2,26 @@
 
 **Настройки Windows и игр, диагностика и сравнение производительности в одном приложении.**
 
-Для Windows 10/11 x64. Бесплатно, без регистрации, рекламы, телеметрии и автоматических обновлений. Прирост FPS зависит от игры и компьютера — проверяйте результат замером.
+![FrameLab 1.7.1 — стартовая страница Windows · ПК с четырьмя профилями и общим меню](docs/images/framelab-1.7.1.png)
 
-**[Скачать установщик](https://github.com/Derposd/v60/releases/latest/download/FrameLab-Setup.exe)** · **[Скачать portable](https://github.com/Derposd/v60/releases/latest/download/FrameLab.exe)**
+<p align="center">
+  <a href="https://github.com/Derposd/v60/releases/latest/download/FrameLab-Setup.exe"><img alt="Скачать установщик" src="https://img.shields.io/badge/%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D1%89%D0%B8%D0%BA-F2380B?style=for-the-badge" height="36"></a>
+  <a href="https://github.com/Derposd/v60/releases/latest/download/FrameLab.exe"><img alt="Portable" src="https://img.shields.io/badge/Portable-292824?style=for-the-badge" height="36"></a>
+  <a href="https://derposd.github.io/v60/"><img alt="Сайт" src="https://img.shields.io/badge/%D0%A1%D0%B0%D0%B9%D1%82-356978?style=for-the-badge" height="36"></a>
+  <a href="https://github.com/Derposd/v60/releases"><img alt="Все версии" src="https://img.shields.io/badge/%D0%92%D1%81%D0%B5%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-59564F?style=for-the-badge" height="36"></a>
+</p>
 
-[Сайт](https://derposd.github.io/v60/) · [Все версии](https://github.com/Derposd/v60/releases) · [Сообщить о проблеме](https://github.com/Derposd/v60/issues/new)
+<p align="center">
+  <a href="https://github.com/Derposd/v60/releases"><img alt="Всего скачиваний файлов релизов" src="https://img.shields.io/github/downloads/Derposd/v60/total?style=for-the-badge&amp;label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&amp;color=F2380B&amp;labelColor=292824&amp;cacheSeconds=3600"></a>
+  <a href="https://github.com/Derposd/v60/releases/latest"><img alt="Последняя версия" src="https://img.shields.io/github/v/release/Derposd/v60?style=for-the-badge&amp;label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&amp;color=356978&amp;labelColor=292824"></a>
+  <img alt="Windows 10 и 11, x64" src="https://img.shields.io/badge/Windows-10%20%7C%2011%20%C2%B7%20x64-59564F?style=for-the-badge&amp;labelColor=292824">
+</p>
+
+Счётчик показывает суммарные скачивания файлов всех релизов, включая установщик и portable, а не число уникальных пользователей. Данные автоматически обновляются через [Shields.io](https://shields.io/badges/git-hub-downloads-all-assets-all-releases); из-за кеширования новые загрузки отображаются с задержкой.
+
+Бесплатно, без регистрации, рекламы, телеметрии и автоматических обновлений приложения. Прирост FPS зависит от игры и компьютера — проверяйте результат замером.
+
+[Быстрый старт](#быстрый-старт) · [Возможности](#где-что-находится) · [Откат](#откат-и-данные) · [Помощь](#помощь-и-документация) · [Сообщить о проблеме](https://github.com/Derposd/v60/issues/new)
 
 ## Что нового в 1.7.1
 

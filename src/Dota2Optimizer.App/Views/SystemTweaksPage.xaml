@@ -25,7 +25,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="44" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="196" />
+                <ColumnDefinition Width="148" />
                 <ColumnDefinition Width="54" />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="№" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" />
@@ -87,7 +87,7 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="44" />
                                                     <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="196" />
+                                                    <ColumnDefinition Width="148" />
                                                     <ColumnDefinition Width="54" />
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Text="{Binding RowNumber, StringFormat={}{0:00}}"

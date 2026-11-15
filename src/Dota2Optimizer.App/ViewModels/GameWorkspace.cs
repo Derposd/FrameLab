@@ -35,26 +35,17 @@ public sealed class GameWorkspace
     public CrashViewModel Crash { get; }
 }
 
-/// <summary>
-/// Each section has its own accent colour (Dota — crimson, CS2 — amber, GTA RP — violet-blue). The brushes are replaced in the
-/// application resources, and every accent use in XAML is a DynamicResource, so the whole window recolours.
-/// </summary>
+/// <summary>The app keeps one vermilion accent across every game profile, as in the FrameLab specification layout.</summary>
 public static class GameTheme
 {
-    public static void Apply(GameId game)
-    {
-        var (accent, hover, pressed, onAccent) = game == GameId.Cs2
-            ? (Color.FromRgb(0x9A, 0x70, 0x2C), Color.FromRgb(0xB1, 0x8A, 0x4D), Color.FromRgb(0x80, 0x59, 0x1F), Color.FromRgb(0xF5, 0xF0, 0xE6))
-            : (Color.FromRgb(0xA7, 0x47, 0x38), Color.FromRgb(0xBD, 0x66, 0x56), Color.FromRgb(0x88, 0x38, 0x2E), Color.FromRgb(0xF6, 0xEE, 0xE7));
-        Apply(accent, hover, pressed, onAccent);
-    }
+    public static void Apply(GameId game) => ApplyBrand();
 
-    /// <summary>«ПК» section (Windows and other games): teal.</summary>
-    public static void ApplyPc() =>
-        Apply(Color.FromRgb(0x49, 0x6A, 0x7B), Color.FromRgb(0x68, 0x89, 0x98), Color.FromRgb(0x38, 0x56, 0x66), Color.FromRgb(0xF0, 0xF2, 0xEE));
+    /// <summary>Windows profile uses the same brand accent as the game profiles.</summary>
+    public static void ApplyPc() => ApplyBrand();
 
-    public static void ApplyGta() =>
-        Apply(Color.FromRgb(0x66, 0x5B, 0x91), Color.FromRgb(0x81, 0x76, 0xAA), Color.FromRgb(0x51, 0x46, 0x75), Color.FromRgb(0xF5, 0xF0, 0xE6));
+    public static void ApplyGta() => ApplyBrand();
+
+    private static void ApplyBrand() => Apply(Color.FromRgb(0xF2, 0x38, 0x0B), Color.FromRgb(0xD9, 0x32, 0x0A), Color.FromRgb(0xB9, 0x2B, 0x0A), Color.FromRgb(0xF2, 0xEF, 0xE7));
 
     private static void Apply(Color accent, Color hover, Color pressed, Color onAccent)
     {
@@ -66,24 +57,13 @@ public static class GameTheme
         r["OnAccent"] = Frozen(new SolidColorBrush(onAccent));
         r["AccentSoft"] = Frozen(new SolidColorBrush(Color.FromArgb(0x22, accent.R, accent.G, accent.B)));
         r["AccentSoftBorder"] = Frozen(new SolidColorBrush(Color.FromArgb(0x55, accent.R, accent.G, accent.B)));
-        r["AccentGradient"] = Frozen(new LinearGradientBrush(hover, pressed, new Point(0, 0), new Point(1, 1)));
-        r["BarGradient"] = Frozen(new LinearGradientBrush(hover, pressed, new Point(0, 0), new Point(0, 1)));
-        r["HeroGradient"] = Frozen(new LinearGradientBrush(new GradientStopCollection
-        {
-            new(Color.FromArgb(0x30, accent.R, accent.G, accent.B), 0),
-            new(Color.FromArgb(0x08, accent.R, accent.G, accent.B), 0.55),
-            new(Color.FromArgb(0x00, accent.R, accent.G, accent.B), 1),
-        }, new Point(0, 0), new Point(1, 1)));
-        r["HeroBorder"] = Frozen(new SolidColorBrush(Color.FromArgb(0x40, accent.R, accent.G, accent.B)));
-        r["Glow.Button"] = Views.Motion.Performance ? null : Frozen(new System.Windows.Media.Effects.DropShadowEffect
-        {
-            Color = accent, BlurRadius = 22, ShadowDepth = 3, Direction = 270, Opacity = 0.38, RenderingBias = System.Windows.Media.Effects.RenderingBias.Performance,
-        });
-        r["Glow"] = Views.Motion.Performance ? Brushes.Transparent : Frozen(new RadialGradientBrush(new GradientStopCollection
-        {
-            new(Color.FromArgb(0x2C, accent.R, accent.G, accent.B), 0),
-            new(Color.FromArgb(0x00, accent.R, accent.G, accent.B), 1),
-        }) { Center = new Point(0.85, 0), GradientOrigin = new Point(0.85, 0), RadiusX = 0.7, RadiusY = 1.1 });
+        var accentBrush = Frozen(new SolidColorBrush(accent));
+        r["AccentGradient"] = accentBrush;
+        r["BarGradient"] = accentBrush;
+        r["HeroGradient"] = Brushes.Transparent;
+        r["HeroBorder"] = Frozen(new SolidColorBrush(Color.FromRgb(0x17, 0x16, 0x14)));
+        r["Glow.Button"] = null;
+        r["Glow"] = Brushes.Transparent;
     }
 
     private static T Frozen<T>(T f)

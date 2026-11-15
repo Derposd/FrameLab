@@ -23,11 +23,11 @@
     <BackEase x:Key="Ease.Pop" EasingMode="EaseOut" Amplitude="0.35" />
 
     <!-- Radii -->
-    <CornerRadius x:Key="Radius.S">3</CornerRadius>
-    <CornerRadius x:Key="Radius.M">4</CornerRadius>
-    <CornerRadius x:Key="Radius.L">6</CornerRadius>
-    <CornerRadius x:Key="Radius.XL">8</CornerRadius>
-    <CornerRadius x:Key="Radius.Pill">999</CornerRadius>
+    <CornerRadius x:Key="Radius.S">0</CornerRadius>
+    <CornerRadius x:Key="Radius.M">0</CornerRadius>
+    <CornerRadius x:Key="Radius.L">0</CornerRadius>
+    <CornerRadius x:Key="Radius.XL">0</CornerRadius>
+    <CornerRadius x:Key="Radius.Pill">0</CornerRadius>
 
     <!-- Spacing (4-pt scale) -->
     <sys:Double x:Key="Space.1">4</sys:Double>
@@ -38,7 +38,7 @@
     <sys:Double x:Key="Space.8">32</sys:Double>
     <Thickness x:Key="Pad.Card">20,18,20,18</Thickness>
     <Thickness x:Key="Pad.Row">16,12,16,12</Thickness>
-    <Thickness x:Key="Margin.Page">36,8,32,28</Thickness>
+    <Thickness x:Key="Margin.Page">36,26,36,32</Thickness>
 
     <!-- Type scale -->
     <sys:Double x:Key="Font.Caption">12</sys:Double>

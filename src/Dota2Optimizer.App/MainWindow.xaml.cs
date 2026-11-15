@@ -48,7 +48,7 @@ public partial class MainWindow : Window
     {
         var maximized = WindowState == WindowState.Maximized;
         Root.Margin = maximized ? new Thickness(SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.FixedFrameVerticalBorderWidth) : new Thickness(0);
-        Root.BorderThickness = maximized ? new Thickness(0) : new Thickness(1);
+        Root.BorderThickness = new Thickness(0);
         MaxButton.Tag = maximized ? "M 2.5,0.5 L 9.5,0.5 L 9.5,7.5 M 0.5,2.5 L 7.5,2.5 L 7.5,9.5 L 0.5,9.5 Z" : "M 0.5,0.5 L 9.5,0.5 L 9.5,9.5 L 0.5,9.5 Z";
         MaxButton.ToolTip = maximized ? "Восстановить" : "Развернуть";
     }

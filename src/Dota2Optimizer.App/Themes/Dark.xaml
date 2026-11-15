@@ -2,19 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- ============ Palette ============ -->
-    <Color x:Key="BgColor">#D8D2C6</Color>
-    <Color x:Key="SidebarColor">#CEC7BA</Color>
-    <Color x:Key="PanelColor">#E0DACE</Color>
-    <Color x:Key="PanelAltColor">#D4CDBF</Color>
-    <Color x:Key="HoverColor">#C8C1B4</Color>
-    <Color x:Key="BorderColor">#BDB4A4</Color>
-    <Color x:Key="BorderStrongColor">#918878</Color>
-    <Color x:Key="TextColor">#26241F</Color>
-    <Color x:Key="MutedColor">#514D44</Color>
-    <Color x:Key="SubtleColor">#716B60</Color>
-    <Color x:Key="AccentColor">#A74738</Color>
-    <Color x:Key="AccentHoverColor">#BD6656</Color>
-    <Color x:Key="AccentPressedColor">#88382E</Color>
+    <Color x:Key="BgColor">#F2EFE7</Color>
+    <Color x:Key="SidebarColor">#F2EFE7</Color>
+    <Color x:Key="PanelColor">#F5F2EA</Color>
+    <Color x:Key="PanelAltColor">#E9E5DB</Color>
+    <Color x:Key="HoverColor">#DED9CD</Color>
+    <Color x:Key="BorderColor">#CBC5B8</Color>
+    <Color x:Key="BorderStrongColor">#837C70</Color>
+    <Color x:Key="TextColor">#171614</Color>
+    <Color x:Key="MutedColor">#4E4B45</Color>
+    <Color x:Key="SubtleColor">#706B61</Color>
+    <Color x:Key="AccentColor">#F2380B</Color>
+    <Color x:Key="AccentHoverColor">#D9320A</Color>
+    <Color x:Key="AccentPressedColor">#B92B0A</Color>
 
     <SolidColorBrush x:Key="Bg" Color="{StaticResource BgColor}" />
     <SolidColorBrush x:Key="Sidebar" Color="{StaticResource SidebarColor}" />
@@ -29,48 +29,22 @@
     <SolidColorBrush x:Key="Accent" Color="{StaticResource AccentColor}" />
     <SolidColorBrush x:Key="AccentHover" Color="{StaticResource AccentHoverColor}" />
     <SolidColorBrush x:Key="AccentPressed" Color="{StaticResource AccentPressedColor}" />
-    <SolidColorBrush x:Key="AccentSoft" Color="#22A74738" />
-    <SolidColorBrush x:Key="AccentSoftBorder" Color="#55A74738" />
+    <SolidColorBrush x:Key="AccentSoft" Color="#22F2380B" />
+    <SolidColorBrush x:Key="AccentSoftBorder" Color="#55F2380B" />
     <!-- Text on accent fills; GameTheme switches it to dark for the amber CS2 accent. -->
     <SolidColorBrush x:Key="OnAccent" Color="White" />
-    <SolidColorBrush x:Key="HeroBorder" Color="#40A74738" />
-    <SolidColorBrush x:Key="Rail" Color="#CEC7BA" />
-    <!-- Card surface: a faint top-down gradient and a rim that is lighter at the top edge, like light falling from above. -->
-    <LinearGradientBrush x:Key="CardBg" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#E3DDD1" Offset="0" />
-        <GradientStop Color="#DAD4C8" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="CardRim" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#BDB4A4" Offset="0" />
-        <GradientStop Color="#C9C2B5" Offset="0.45" />
-        <GradientStop Color="#D4CDBF" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="CardRimHover" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#918878" Offset="0" />
-        <GradientStop Color="#A69D8D" Offset="1" />
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="InsetBg" Color="#D4CDBF" />
-    <RadialGradientBrush x:Key="Glow" Center="0.85,0" GradientOrigin="0.85,0" RadiusX="0.7" RadiusY="1.1">
-        <GradientStop Color="#24A74738" Offset="0" />
-        <GradientStop Color="#00A74738" Offset="1" />
-    </RadialGradientBrush>
+    <SolidColorBrush x:Key="HeroBorder" Color="#171614" />
+    <SolidColorBrush x:Key="Rail" Color="#EAE6DC" />
+    <SolidColorBrush x:Key="CardBg" Color="#F2EFE7" />
+    <SolidColorBrush x:Key="CardRim" Color="#CBC5B8" />
+    <SolidColorBrush x:Key="CardRimHover" Color="#837C70" />
+    <SolidColorBrush x:Key="InsetBg" Color="#ECE8DE" />
+    <SolidColorBrush x:Key="Glow" Color="Transparent" />
     <!-- Fixed per-game tile colours in the game rail (both tiles are visible at once). -->
-    <LinearGradientBrush x:Key="DotaTile" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#BD6656" Offset="0" />
-        <GradientStop Color="#88382E" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="Cs2Tile" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#B18A4D" Offset="0" />
-        <GradientStop Color="#80591F" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="PcTile" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#688998" Offset="0" />
-        <GradientStop Color="#385666" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="GtaTile" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#8176AA" Offset="0" />
-        <GradientStop Color="#514675" Offset="1" />
-    </LinearGradientBrush>
+    <SolidColorBrush x:Key="DotaTile" Color="#F2380B" />
+    <SolidColorBrush x:Key="Cs2Tile" Color="#F2380B" />
+    <SolidColorBrush x:Key="PcTile" Color="#F2380B" />
+    <SolidColorBrush x:Key="GtaTile" Color="#F2380B" />
 
     <SolidColorBrush x:Key="Ok" Color="#416B4B" />
     <SolidColorBrush x:Key="OkSoft" Color="#1A416B4B" />
@@ -81,21 +55,11 @@
     <SolidColorBrush x:Key="CritSoft" Color="#1AA74738" />
     <SolidColorBrush x:Key="Info" Color="#496A7B" />
     <SolidColorBrush x:Key="InfoSoft" Color="#1A496A7B" />
-    <SolidColorBrush x:Key="NeutralSoft" Color="#14000000" />
+    <SolidColorBrush x:Key="NeutralSoft" Color="#0C171614" />
 
-    <LinearGradientBrush x:Key="AccentGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#BD6656" Offset="0" />
-        <GradientStop Color="#88382E" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="HeroGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#30F0453A" Offset="0" />
-        <GradientStop Color="#08F0453A" Offset="0.55" />
-        <GradientStop Color="#00F0453A" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="BarGradient" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#BD6656" Offset="0" />
-        <GradientStop Color="#88382E" Offset="1" />
-    </LinearGradientBrush>
+    <SolidColorBrush x:Key="AccentGradient" Color="#F2380B" />
+    <SolidColorBrush x:Key="HeroGradient" Color="Transparent" />
+    <SolidColorBrush x:Key="BarGradient" Color="#F2380B" />
 
     <FontFamily x:Key="UiFont">Segoe UI Variable Text, Segoe UI</FontFamily>
     <FontFamily x:Key="DisplayFont">Segoe UI Variable Display, Segoe UI</FontFamily>
@@ -154,16 +118,16 @@
     </Style>
 
     <Style TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="LineHeight" Value="20" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="PageTitle">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
-        <Setter Property="FontSize" Value="32" />
+        <Setter Property="FontSize" Value="38" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="LineHeight" Value="40" />
+        <Setter Property="LineHeight" Value="46" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
     </Style>
 
@@ -178,23 +142,26 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="H1">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
-        <Setter Property="FontSize" Value="21" />
+        <Setter Property="FontSize" Value="26" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="H2">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Margin" Value="0,26,0,12" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="CardTitle">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="19" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
     </Style>
@@ -205,19 +172,21 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="Caption">
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="LineHeight" Value="17" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="LineHeight" Value="19" />
         <Setter Property="Foreground" Value="{StaticResource Subtle}" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="Overline">
+        <Setter Property="FontFamily" Value="{StaticResource MonoFont}" />
         <Setter Property="FontSize" Value="11" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{StaticResource Subtle}" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="StatNumber">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
         <Setter Property="FontSize" Value="28" />
         <Setter Property="FontWeight" Value="SemiBold" />
@@ -226,33 +195,34 @@
     </Style>
 
     <!-- ============ Surfaces ============ -->
-    <!-- Every card fades and rises in when its page opens, staggered by its position (skipped with «Уменьшить анимации»). -->
+    <!-- Shared paper surface: flat sections separated by rules, used throughout every screen. -->
     <Style TargetType="Border" x:Key="Card">
         <Setter Property="v:Fx.Appear" Value="True" />
-        <Setter Property="Background" Value="{StaticResource CardBg}" />
-        <Setter Property="BorderBrush" Value="{StaticResource CardRim}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="22,20" />
-        <Setter Property="Margin" Value="0,0,0,12" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="18,16" />
+        <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
 
     <!-- Kept for compatibility: same look as Card. -->
     <Style TargetType="Border" x:Key="StripeCard" BasedOn="{StaticResource Card}" />
 
-    <!-- Page-top card with a warm gradient. -->
+    <!-- Page-top editorial section, anchored by the bold rule from the reference. -->
     <Style TargetType="Border" x:Key="Hero" BasedOn="{StaticResource Card}">
-        <Setter Property="Background" Value="{DynamicResource HeroGradient}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource HeroBorder}" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="28,26" />
-        <Setter Property="Margin" Value="0,0,0,16" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource Text}" />
+        <Setter Property="BorderThickness" Value="0,2,0,1" />
+        <Setter Property="Padding" Value="22,20" />
+        <Setter Property="Margin" Value="0,0,0,14" />
     </Style>
 
     <!-- Small accent line above a page title: the game or section the page belongs to. -->
     <Style TargetType="TextBlock" x:Key="Kicker">
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource MonoFont}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="LineHeight" Value="16" />
         <Setter Property="Foreground" Value="{DynamicResource Accent}" />
         <Setter Property="Margin" Value="0,0,0,4" />
@@ -260,28 +230,29 @@
 
     <!-- Section heading row above a group of cards. -->
     <Style TargetType="TextBlock" x:Key="Section">
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="Border" x:Key="Inset">
-        <Setter Property="Background" Value="{StaticResource InsetBg}" />
-        <Setter Property="BorderBrush" Value="#BDB4A4" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="14,12" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="12,10" />
     </Style>
 
     <Style TargetType="Border" x:Key="StatTile">
-        <Setter Property="Background" Value="{StaticResource CardBg}" />
-        <Setter Property="BorderBrush" Value="{StaticResource CardRim}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="18,14" />
-        <Setter Property="Margin" Value="0,0,12,12" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="14,12" />
+        <Setter Property="Margin" Value="0" />
     </Style>
 
     <Style TargetType="Border" x:Key="Divider">
@@ -289,24 +260,25 @@
         <Setter Property="BorderThickness" Value="0,0,0,1" />
     </Style>
 
-    <!-- Small rounded label. -->
+    <!-- Compact square labels. -->
     <Style TargetType="Border" x:Key="Tag">
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="9,3" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="8,3" />
         <Setter Property="Margin" Value="0,0,6,4" />
         <Setter Property="Background" Value="{StaticResource NeutralSoft}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TagText">
-        <Setter Property="FontSize" Value="11.5" />
+        <Setter Property="FontFamily" Value="{StaticResource MonoFont}" />
+        <Setter Property="FontSize" Value="10.5" />
         <Setter Property="LineHeight" Value="16" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{StaticResource Muted}" />
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
-    <!-- Rounded square with a stroked icon: set Background (soft colour) and Tag (geometry); Foreground colours the icon. -->
+    <!-- Square icon mark. -->
     <Style TargetType="ContentControl" x:Key="IconBadge">
         <Setter Property="Width" Value="36" />
         <Setter Property="Height" Value="36" />
@@ -317,7 +289,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <Border Background="{TemplateBinding Background}" CornerRadius="4" BorderThickness="1" BorderBrush="#12000000">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
                         <Viewbox Margin="8.5">
                             <Canvas Width="24" Height="24">
                                 <Path Data="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" Stroke="{TemplateBinding Foreground}"
@@ -356,7 +328,7 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="-3" RadiusX="11" RadiusY="11" Stroke="{DynamicResource AccentHover}" StrokeThickness="1.5" SnapsToDevicePixels="True" />
+                <Rectangle Margin="-3" Stroke="{DynamicResource Accent}" StrokeThickness="2" SnapsToDevicePixels="True" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -366,8 +338,8 @@
     <Style TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
-        <Setter Property="Background" Value="#D4CDBF" />
-        <Setter Property="BorderBrush" Value="#918878" />
+        <Setter Property="Background" Value="{StaticResource Bg}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Text}" />
         <Setter Property="Padding" Value="15,8" />
         <Setter Property="Margin" Value="0,0,8,0" />
         <Setter Property="FontWeight" Value="SemiBold" />
@@ -377,7 +349,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="1" CornerRadius="4" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
+                            BorderThickness="1" CornerRadius="0" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
                         <Border.RenderTransform>
                             <ScaleTransform x:Name="press" />
                         </Border.RenderTransform>
@@ -392,8 +364,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="b" Property="Background" Value="#C8C1B4" />
-                            <Setter TargetName="b" Property="BorderBrush" Value="#918878" />
+                            <Setter TargetName="b" Property="Background" Value="{StaticResource Hover}" />
+                            <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Text}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Trigger.EnterActions>
@@ -424,14 +396,13 @@
     </Style>
 
     <Style TargetType="Button" x:Key="Primary" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Foreground" Value="{DynamicResource OnAccent}" />
+        <Setter Property="Foreground" Value="{StaticResource Bg}" />
         <Setter Property="Padding" Value="20,9" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <!-- Soft glow in the section accent (removed in performance mode). -->
-                    <Border x:Name="b" Background="{DynamicResource AccentGradient}" CornerRadius="4" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True"
-                            Effect="{DynamicResource Glow.Button}" RenderTransformOrigin="0.5,0.5">
+                    <Border x:Name="b" Background="{StaticResource Text}" CornerRadius="0" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True"
+                            RenderTransformOrigin="0.5,0.5">
                         <Border.RenderTransform>
                             <ScaleTransform x:Name="press" />
                         </Border.RenderTransform>
@@ -446,7 +417,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="b" Property="Background" Value="{DynamicResource AccentHover}" />
+                            <Setter TargetName="b" Property="Background" Value="{DynamicResource Accent}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Trigger.EnterActions>
@@ -559,9 +530,9 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="box" Width="18" Height="18" CornerRadius="5" BorderThickness="1.5" VerticalAlignment="Top" Margin="0,1,0,0"
-                                BorderBrush="#BDB4A4" Background="{StaticResource PanelAlt}">
-                            <Path x:Name="check" Data="M 4,9 L 7.5,12.5 L 14,5.5" Stroke="{DynamicResource OnAccent}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                        <Border x:Name="box" Width="18" Height="18" CornerRadius="0" BorderThickness="1.5" VerticalAlignment="Top" Margin="0,1,0,0"
+                                BorderBrush="{StaticResource BorderStrong}" Background="Transparent">
+                            <Path x:Name="check" Data="M 4,9 L 7.5,12.5 L 14,5.5" Stroke="{StaticResource Bg}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
                                   StrokeLineJoin="Round" Visibility="Collapsed" Margin="-1.5" />
                         </Border>
                         <ContentPresenter Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="False" />
@@ -598,18 +569,16 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="track" Width="38" Height="22" CornerRadius="4" Background="#BDB4A4" BorderBrush="#BDB4A4" BorderThickness="1" VerticalAlignment="Top">
-                            <Ellipse x:Name="thumb" Width="14" Height="14" Fill="#716B60" HorizontalAlignment="Left" Margin="3,0,0,0" />
+                        <Border x:Name="track" Width="26" Height="26" CornerRadius="0" Background="Transparent" BorderBrush="{StaticResource Text}" BorderThickness="2" VerticalAlignment="Top">
+                            <Path x:Name="thumb" Data="M 4,10 L 8,14 L 17,5" Stroke="{StaticResource Bg}" StrokeThickness="2.5" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" />
                         </Border>
                         <ContentPresenter Grid.Column="1" Margin="12,1,0,0" VerticalAlignment="Center" RecognizesAccessKey="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="track" Property="Background" Value="{DynamicResource Accent}" />
-                            <Setter TargetName="track" Property="BorderBrush" Value="{DynamicResource Accent}" />
-                            <Setter TargetName="thumb" Property="Fill" Value="White" />
-                            <Setter TargetName="thumb" Property="HorizontalAlignment" Value="Right" />
-                            <Setter TargetName="thumb" Property="Margin" Value="0,0,3,0" />
+                            <Setter TargetName="track" Property="BorderBrush" Value="{StaticResource Text}" />
+                            <Setter TargetName="thumb" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="track" Property="BorderBrush" Value="{DynamicResource AccentHover}" />
@@ -633,7 +602,7 @@
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal" Background="Transparent">
                         <Grid Width="18" Height="18" VerticalAlignment="Center">
-                            <Ellipse x:Name="ring" Stroke="#BDB4A4" StrokeThickness="1.5" Fill="{StaticResource PanelAlt}" />
+                            <Ellipse x:Name="ring" Stroke="{StaticResource BorderStrong}" StrokeThickness="1.5" Fill="Transparent" />
                             <Ellipse x:Name="dot" Width="8" Height="8" Fill="{DynamicResource OnAccent}" Visibility="Collapsed" />
                         </Grid>
                         <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="False" />
@@ -666,7 +635,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border x:Name="seg" CornerRadius="4" Padding="16,7" Background="Transparent">
+                    <Border x:Name="seg" CornerRadius="0" Padding="16,7" Background="Transparent" BorderBrush="Transparent" BorderThickness="0,0,0,2">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="False">
                             <ContentPresenter.Resources>
                                 <!-- Plain strings inherit the control's Foreground instead of the global TextBlock colour. -->
@@ -681,7 +650,7 @@
                             <Setter Property="Foreground" Value="{StaticResource Text}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="seg" Property="Background" Value="{StaticResource Hover}" />
+                            <Setter TargetName="seg" Property="BorderBrush" Value="{DynamicResource Accent}" />
                             <Setter Property="Foreground" Value="{StaticResource Text}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -691,28 +660,28 @@
     </Style>
 
     <Style TargetType="Border" x:Key="SegmentHost">
-        <Setter Property="Background" Value="{StaticResource PanelAlt}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="3" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
 
     <Style TargetType="TextBox">
-        <Setter Property="Background" Value="{StaticResource InsetBg}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="CaretBrush" Value="{StaticResource Text}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Accent}" />
         <Setter Property="BorderBrush" Value="{StaticResource BorderStrong}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="Padding" Value="12,8" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
                         <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -735,7 +704,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
                         <DockPanel>
                             <Viewbox DockPanel.Dock="Left" Width="16" Height="16" Margin="12,0,10,0" VerticalAlignment="Center">
                                 <Canvas Width="24" Height="24">
@@ -781,7 +750,7 @@
         </Setter>
     </Style>
 
-    <!-- Game chip in the sidebar switcher (RadioButton). Background = the game's tile gradient, Content = monogram, Tag = name. -->
+    <!-- Compact game selector with a clear active mark and no decorative tile gradients. -->
     <Style TargetType="RadioButton" x:Key="GameChip">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
@@ -790,9 +759,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border x:Name="chip" CornerRadius="13" Padding="4,8,4,7" Background="Transparent">
+                    <Border x:Name="chip" CornerRadius="0" Padding="4,8,4,7" Background="Transparent">
                         <StackPanel HorizontalAlignment="Center">
-                            <Border x:Name="tile" Width="40" Height="40" CornerRadius="4" Background="{StaticResource PanelAlt}" BorderBrush="{StaticResource BorderStrong}"
+                            <Border x:Name="tile" Width="40" Height="40" CornerRadius="0" Background="Transparent" BorderBrush="{StaticResource BorderBrush}"
                                     BorderThickness="1" HorizontalAlignment="Center">
                                 <TextBlock x:Name="mono" Text="{TemplateBinding Content}" FontFamily="{StaticResource DisplayFont}" FontSize="13" FontWeight="Black"
                                            Foreground="{StaticResource Muted}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="NoWrap" LineHeight="16" />
@@ -803,14 +772,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="chip" Property="Background" Value="#0A000000" />
+                            <Setter TargetName="chip" Property="Background" Value="Transparent" />
                             <Setter TargetName="mono" Property="Foreground" Value="{StaticResource Text}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="chip" Property="Background" Value="#12000000" />
-                            <Setter TargetName="tile" Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="chip" Property="Background" Value="Transparent" />
+                            <Setter TargetName="tile" Property="Background" Value="{DynamicResource Accent}" />
                             <Setter TargetName="tile" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="mono" Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="mono" Property="Foreground" Value="{StaticResource Bg}" />
                             <Setter TargetName="label" Property="Foreground" Value="{StaticResource Text}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -876,6 +845,7 @@
     </Style>
 
     <Style TargetType="TabControl" x:Key="SideNav">
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="Background" Value="{StaticResource Bg}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
@@ -887,54 +857,35 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="440" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.28*" MinWidth="280" MaxWidth="440" />
+                            <ColumnDefinition Width="0.72*" />
                         </Grid.ColumnDefinitions>
                         <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource Bg}" BorderBrush="{StaticResource Text}" BorderThickness="0,0,0,2">
                             <DockPanel Margin="24,0,156,0" VerticalAlignment="Center">
-                                <Button Style="{StaticResource Flat}" Padding="0" Margin="0" Command="{Binding HomeCommand}" ToolTip="Открыть главную">
+                                <Button Style="{StaticResource Flat}" Padding="0" Margin="0" Command="{Binding HomeCommand}" ToolTip="Открыть главную" WindowChrome.IsHitTestVisibleInChrome="True">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <TextBlock Text="FRAMELAB" FontFamily="{StaticResource DisplayFont}" FontSize="14" FontWeight="ExtraBold" />
+                                        <TextBlock Text="FRAMELAB" FontFamily="{StaticResource DisplayFont}" FontSize="17" FontWeight="ExtraBold" />
                                         <TextBlock Text="оптимизация для игр" FontFamily="{StaticResource MonoFont}" FontSize="11" Foreground="{StaticResource Subtle}" Margin="16,1,0,0" />
                                     </StackPanel>
                                 </Button>
                             </DockPanel>
                         </Border>
-                        <Border x:Name="Sidebar" Grid.Row="1" Background="{StaticResource Sidebar}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,2,0">
+                        <Border x:Name="Sidebar" Grid.Row="1" Background="{StaticResource Sidebar}" BorderBrush="{StaticResource Text}" BorderThickness="0,0,2,0">
                             <Grid>
                             <DockPanel x:Name="NavigationPane">
-                                <!-- Brand -->
-                                <DockPanel DockPanel.Dock="Top" Margin="20,20,18,18">
-                                    <Border Width="40" Height="40" CornerRadius="4" Margin="0,0,12,0">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="pack://application:,,,/Assets/logo.png" Stretch="UniformToFill" />
-                                        </Border.Background>
-                                    </Border>
-                                    <Border DockPanel.Dock="Right" Style="{StaticResource Tag}" VerticalAlignment="Center" Margin="8,0,0,0">
-                                        <TextBlock Text="{Binding About.ShortVersion}" Style="{StaticResource TagText}" FontSize="10.5" />
-                                    </Border>
-                                    <StackPanel VerticalAlignment="Center">
-                                        <TextBlock Text="FrameLab" FontFamily="{StaticResource DisplayFont}" FontSize="18" FontWeight="Bold" LineHeight="22" TextWrapping="NoWrap" />
-                                        <TextBlock Text="Оптимизатор для игр" Style="{StaticResource Caption}" FontSize="11.5" LineHeight="15" TextWrapping="NoWrap" />
-                                    </StackPanel>
+                                <DockPanel DockPanel.Dock="Top" Margin="28,26,28,12">
+                                    <TextBlock DockPanel.Dock="Right" Text="{Binding About.ShortVersion}" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" />
+                                    <TextBlock Text="ПРОФИЛЬ ИГРЫ" Style="{StaticResource Overline}" />
                                 </DockPanel>
-                                <!-- Game switcher -->
-                                <Border DockPanel.Dock="Top" Margin="14,0,14,8" Padding="5" CornerRadius="4" Background="{StaticResource CardBg}"
-                                        BorderBrush="{StaticResource CardRim}" BorderThickness="1">
-                                    <UniformGrid Columns="4">
-                                        <RadioButton Style="{StaticResource GameChip}" Content="ПК" Tag="Windows" Background="{StaticResource PcTile}" Foreground="#04201C"
-                                                     IsChecked="{Binding IsPc}" GroupName="game" ToolTip="Windows и другие игры: твики системы, игровой режим, пресеты Fortnite, Valorant, Minecraft, Apex, бенчмарк" />
-                                        <RadioButton Style="{StaticResource GameChip}" Content="D2" Tag="Dota 2" Background="{StaticResource DotaTile}"
-                                                     IsChecked="{Binding IsDota}" GroupName="game" ToolTip="Dota 2" />
-                                        <RadioButton Style="{StaticResource GameChip}" Content="CS2" Tag="CS2" Background="{StaticResource Cs2Tile}" Foreground="#2A1A04"
-                                                     IsChecked="{Binding IsCs2}" GroupName="game" ToolTip="Counter-Strike 2" />
-                                        <RadioButton Style="{StaticResource GameChip}" Content="RP" Tag="GTA RP" Background="{StaticResource GtaTile}"
-                                                     IsChecked="{Binding IsGta}" GroupName="game" ToolTip="GTA V: GTA5RP, Majestic RP и другие RP-проекты" />
-                                    </UniformGrid>
-                                </Border>
+                                <StackPanel DockPanel.Dock="Top" Margin="28,0,28,16">
+                                    <RadioButton Style="{StaticResource ProfileChoice}" Content="Windows · ПК" Height="40" FontSize="20" IsChecked="{Binding IsPc}" GroupName="game" />
+                                    <RadioButton Style="{StaticResource ProfileChoice}" Content="Dota 2" Height="40" FontSize="20" IsChecked="{Binding IsDota}" GroupName="game" />
+                                    <RadioButton Style="{StaticResource ProfileChoice}" Content="Counter-Strike 2" Height="40" FontSize="20" IsChecked="{Binding IsCs2}" GroupName="game" />
+                                    <RadioButton Style="{StaticResource ProfileChoice}" Content="GTA V · RP" Height="40" FontSize="20" IsChecked="{Binding IsGta}" GroupName="game" />
+                                </StackPanel>
                                 <!-- PC card -->
-                                <Border DockPanel.Dock="Bottom" Margin="14,8,14,16" Padding="12,11" CornerRadius="4" Background="{StaticResource CardBg}"
-                                        BorderBrush="{StaticResource CardRim}" BorderThickness="1">
+                                <Border DockPanel.Dock="Bottom" Margin="14,8,14,16" Padding="0,10" CornerRadius="0" Background="Transparent"
+                                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
                                     <DockPanel>
                                         <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconCpu}" Width="36" Height="36" Margin="0,0,10,0" />
                                         <StackPanel VerticalAlignment="Center">
@@ -947,14 +898,15 @@
                                     <StackPanel IsItemsHost="True" Margin="0,2,0,8" />
                                 </ScrollViewer>
                             </DockPanel>
-                            <Grid x:Name="SpecificationPane" Visibility="Collapsed">
-                                <Grid Margin="36,28,36,24">
+                            <ScrollViewer x:Name="SpecificationPane" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                <Grid Margin="28,24,28,24">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0">
+                                        <Button Content="← Все разделы" Style="{StaticResource Flat}" Command="{Binding HomeCommand}" HorizontalAlignment="Left" Padding="0,0,0,12" Margin="0" />
                                         <TextBlock Text="ПРОФИЛЬ ИГРЫ" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource Subtle}" />
                                         <StackPanel Margin="0,10,0,0">
                                             <RadioButton Style="{StaticResource ProfileChoice}" Content="Dota 2" GroupName="profile-game"
@@ -967,37 +919,37 @@
                                                          IsChecked="{Binding DataContext.IsPc, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Mode=TwoWay}" />
                                         </StackPanel>
                                     </StackPanel>
-                                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="0,12,0,10">
+                                    <StackPanel Grid.Row="1" Margin="0,20,0,18">
                                         <TextBlock Text="ИЗМЕНЕНИЙ ВКЛЮЧЕНО" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource Subtle}" />
                                         <Grid Margin="0,8,0,0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Text="{Binding SystemTweaks.ActiveCount, StringFormat={}{0:00}}" FontFamily="{StaticResource DisplayFont}" FontSize="174" FontWeight="ExtraBold" LineHeight="160" Foreground="{DynamicResource Accent}" />
+                                            <TextBlock Text="{Binding SystemTweaks.ActiveCount, StringFormat={}{0:00}}" FontFamily="{StaticResource DisplayFont}" FontSize="120" FontWeight="ExtraBold" LineHeight="120" Foreground="{DynamicResource Accent}" />
                                             <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="12,0,0,14">
                                                 <TextBlock Text="из" FontFamily="{StaticResource MonoFont}" FontSize="14" />
                                                 <TextBlock Text="{Binding SystemTweaks.TotalCount}" FontFamily="{StaticResource MonoFont}" FontSize="21" />
                                             </StackPanel>
                                         </Grid>
-                                        <TextBlock Text="изменений Windows и графики применено этим профилем" Style="{StaticResource MutedText}" Margin="0,4,0,0" FontSize="13" />
+                                        <TextBlock Text="текущее состояние Windows и графики на этом ПК" Style="{StaticResource MutedText}" Margin="0,4,0,0" FontSize="13" />
                                     </StackPanel>
                                     <StackPanel Grid.Row="2">
                                         <Button Style="{StaticResource SpecApplyButton}" Command="{Binding SystemTweaks.ApplyRecommendedCommand}">
-                                            <TextBlock Text="{Binding SystemTweaks.RecommendedCount, StringFormat=Включить рекомендуемые ({0})}" TextAlignment="Center" />
+                                            <TextBlock Text="{Binding SystemTweaks.RecommendedCount, StringFormat=Включить рекомендуемые ({0})}" TextAlignment="Center" TextWrapping="Wrap" Foreground="{StaticResource Bg}" FontSize="16" />
                                         </Button>
                                         <Button Style="{StaticResource SpecUndoButton}" Margin="0,10,0,0" Content="Вернуть всё как было"
                                                 Command="{Binding Rollback.RollbackAllCommand}" />
                                         <TextBlock Text="Каждый переключатель применяется отдельно. Исходные значения сохраняются, откат доступен в один клик." Style="{StaticResource MutedText}" FontSize="12.5" Margin="0,14,0,0" />
                                     </StackPanel>
                                 </Grid>
-                            </Grid>
+                            </ScrollViewer>
                             </Grid>
                         </Border>
                         <Grid Grid.Row="1" Grid.Column="1">
                             <!-- Accent glow from the top-right corner, recoloured with the section. -->
                             <Border Background="{DynamicResource Glow}" IsHitTestVisible="False" />
-                            <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" />
+                            <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" TextElement.FontWeight="Normal" />
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -1020,7 +972,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
                     <Grid Margin="12,1">
-                        <Border x:Name="b" Padding="12,9" CornerRadius="4" Background="Transparent">
+                        <Border x:Name="b" Padding="12,9" CornerRadius="0" Background="Transparent">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -1032,7 +984,7 @@
                                               StrokeThickness="2" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
                                     </Canvas>
                                 </Viewbox>
-                                <ContentPresenter Grid.Column="1" ContentSource="Header" Margin="12,0,0,0" VerticalAlignment="Center">
+                                <ContentPresenter x:Name="navLabel" Grid.Column="1" ContentSource="Header" Margin="12,0,0,0" VerticalAlignment="Center">
                                     <ContentPresenter.Resources>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="TextWrapping" Value="NoWrap" />
@@ -1042,11 +994,11 @@
                             </Grid>
                         </Border>
                         <!-- Selected marker on the left edge. -->
-                        <Border x:Name="bar" Width="3" Height="18" CornerRadius="1.5" Background="{DynamicResource Accent}" HorizontalAlignment="Left" Margin="-12,0,0,0" Visibility="Collapsed" />
+                        <Border x:Name="bar" Width="3" Height="22" CornerRadius="0" Background="{DynamicResource Accent}" HorizontalAlignment="Left" Margin="-12,0,0,0" Visibility="Collapsed" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="b" Property="Background" Value="#0D000000" />
+                            <Setter TargetName="b" Property="Background" Value="Transparent" />
                             <Setter Property="Foreground" Value="{StaticResource Text}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
@@ -1054,7 +1006,7 @@
                             <Setter TargetName="icon" Property="Stroke" Value="{DynamicResource AccentHover}" />
                             <Setter TargetName="bar" Property="Visibility" Value="Visible" />
                             <Setter Property="Foreground" Value="{StaticResource Text}" />
-                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter TargetName="navLabel" Property="TextElement.FontWeight" Value="SemiBold" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1088,9 +1040,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Grid Background="Transparent" Width="72" Margin="0,0,0,10">
-                        <Border x:Name="pill" Width="4" Height="8" CornerRadius="2" Background="{StaticResource Text}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Opacity="0" />
+                        <Border x:Name="pill" Width="4" Height="8" CornerRadius="0" Background="{StaticResource Text}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Opacity="0" />
                         <StackPanel HorizontalAlignment="Center">
-                            <Border x:Name="tile" Width="48" Height="48" CornerRadius="4" Background="{StaticResource PanelAlt}" BorderBrush="{StaticResource BorderStrong}" BorderThickness="1">
+                            <Border x:Name="tile" Width="48" Height="48" CornerRadius="0" Background="Transparent" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
                                 <TextBlock x:Name="mono" Text="{TemplateBinding Content}" FontFamily="{StaticResource DisplayFont}" FontSize="15" FontWeight="Black"
                                            Foreground="{StaticResource Muted}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="NoWrap" LineHeight="18" />
                             </Border>
@@ -1105,9 +1057,9 @@
                             <Setter TargetName="pill" Property="Opacity" Value="0.6" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="tile" Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="tile" Property="Background" Value="{DynamicResource Accent}" />
                             <Setter TargetName="tile" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="mono" Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="mono" Property="Foreground" Value="{StaticResource Bg}" />
                             <Setter TargetName="label" Property="Foreground" Value="{StaticResource Text}" />
                             <Setter TargetName="pill" Property="Opacity" Value="1" />
                             <Setter TargetName="pill" Property="Height" Value="34" />
@@ -1119,7 +1071,7 @@
         </Setter>
     </Style>
 
-    <!-- Thin rounded progress bar in the section accent. -->
+    <!-- Thin square progress rule in the brand accent. -->
     <Style TargetType="ProgressBar" x:Key="Progress">
         <Setter Property="Height" Value="8" />
         <Setter Property="Minimum" Value="0" />
@@ -1127,10 +1079,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ProgressBar">
-                    <Border CornerRadius="4" Background="{StaticResource PanelAlt}" ClipToBounds="True">
+                    <Border CornerRadius="0" Background="{StaticResource PanelAlt}" ClipToBounds="True">
                         <Grid>
                             <Border x:Name="PART_Track" />
-                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" CornerRadius="4" Background="{DynamicResource AccentGradient}" />
+                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" CornerRadius="0" Background="{DynamicResource Accent}" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -1138,7 +1090,7 @@
         </Setter>
     </Style>
 
-    <!-- A choice card (RadioButton): highlighted border and soft accent fill when checked. Content = any layout. -->
+    <!-- A flat selectable row with a rule and a single accent marker. -->
     <Style TargetType="RadioButton" x:Key="ChoiceCard">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -1147,7 +1099,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border x:Name="card" CornerRadius="4" Padding="18,16" Background="{StaticResource CardBg}" BorderBrush="{StaticResource CardRim}" BorderThickness="1"
+                    <Border x:Name="card" CornerRadius="0" Padding="18,16" Background="Transparent" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
                             SnapsToDevicePixels="True">
                         <ContentPresenter />
                     </Border>
@@ -1157,7 +1109,6 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="card" Property="BorderBrush" Value="{DynamicResource Accent}" />
-                            <Setter TargetName="card" Property="Background" Value="{DynamicResource AccentSoft}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1209,19 +1160,19 @@
         </Setter>
     </Style>
 
-    <!-- ============ Accordion card (Expander) ============ -->
+    <!-- Flat accordion section with only an active divider. -->
     <Style TargetType="Expander" x:Key="AccordionCard">
         <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="Margin" Value="0,0,0,10" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Expander">
-                    <Border x:Name="card" Background="{StaticResource Panel}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="4">
+                    <Border x:Name="card" Background="Transparent" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0">
                         <StackPanel>
                             <ToggleButton IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Cursor="Hand" Focusable="False">
                                 <ToggleButton.Template>
                                     <ControlTemplate TargetType="ToggleButton">
-                                        <Border x:Name="hdr" Background="Transparent" Padding="18,16" CornerRadius="4">
+                                        <Border x:Name="hdr" Background="Transparent" Padding="14,14" CornerRadius="0">
                                             <DockPanel>
                                                 <Viewbox x:Name="chev" DockPanel.Dock="Right" Width="16" Height="16" VerticalAlignment="Center" Margin="14,0,0,0" RenderTransformOrigin="0.5,0.5">
                                                     <Viewbox.RenderTransform>
@@ -1258,7 +1209,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
                             <Setter TargetName="body" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="card" Property="BorderBrush" Value="{StaticResource BorderStrong}" />
+                            <Setter TargetName="card" Property="BorderBrush" Value="{DynamicResource Accent}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1326,7 +1277,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Border x:Name="t" Background="#BDB4A4" CornerRadius="4" />
+                    <Border x:Name="t" Background="#BDB4A4" CornerRadius="0" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="t" Property="Background" Value="#918878" />

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Что изменится" Width="760" Height="560" MinWidth="560" MinHeight="380"
         WindowStartupLocation="CenterOwner" Style="{StaticResource DarkWindow}" ShowInTaskbar="False" ResizeMode="CanResizeWithGrip">
-    <Grid Margin="24,20,24,20">
+    <Grid Margin="24,20,24,20" Background="{StaticResource Bg}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -13,13 +13,13 @@
 
         <StackPanel>
             <TextBlock Text="Перед применением" Style="{StaticResource Kicker}" />
-            <TextBlock x:Name="HeaderText" Style="{StaticResource H1}" />
+            <TextBlock x:Name="HeaderText" Style="{StaticResource PageTitle}" FontSize="28" LineHeight="34" />
             <TextBlock Style="{StaticResource MutedText}" Margin="0,6,0,14"
                        Text="Ниже — каждое изменение: что сейчас и что станет. Перед каждым шагом сохраняется копия; любой пункт потом отменяется кнопкой «Отменить» или «Откатить всё»." />
         </StackPanel>
 
-        <Border Grid.Row="1" Style="{StaticResource Inset}" Padding="0">
-            <ListView x:Name="Lines" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Border Grid.Row="1" Style="{StaticResource Inset}" BorderBrush="{StaticResource Text}" BorderThickness="0,2,0,1" Padding="0">
+            <ListView x:Name="Lines" Background="Transparent" Foreground="{StaticResource Text}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Focusable" Value="False" />

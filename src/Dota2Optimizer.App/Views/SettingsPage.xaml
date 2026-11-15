@@ -1,26 +1,37 @@
 <UserControl x:Class="Dota2Optimizer.App.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:v="clr-namespace:Dota2Optimizer.App.Views">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ScrollViewer>
         <StackPanel Margin="{StaticResource Margin.Page}">
-            <TextBlock Text="FRAMELAB" Style="{StaticResource Kicker}" />
+            <TextBlock Text="ИНТЕРФЕЙС" Style="{StaticResource Kicker}" />
             <TextBlock Text="Настройки" Style="{StaticResource PageTitle}" />
-            <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,18"
-                       Text="Интерфейс анимирует только прозрачность и сдвиг (это считает видеокарта), анимации короткие и не повторяются в простое. Если ПК совсем слабый или анимации мешают — выключите их здесь." />
-            <Border Style="{StaticResource Card}" v:Fx.Appear="True">
-                <StackPanel>
-                    <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding ReduceMotion}" Content="Уменьшить анимации" FontWeight="SemiBold" />
-                    <TextBlock Style="{StaticResource Caption}" Margin="50,0,0,12" Text="Переходы между страницами, появление карточек, счётчики и кольца — без анимации, сразу в конечном состоянии." />
-                    <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding PerformanceMode}" Content="Режим производительности" FontWeight="SemiBold" />
-                    <TextBlock Style="{StaticResource Caption}" Margin="50,0,0,12" Text="Всё из «Уменьшить анимации» плюс без цветного свечения и теней. Самый лёгкий для видеокарты вариант." />
-                    <Border Style="{StaticResource Inset}">
-                        <TextBlock Text="{Binding SystemText}" Style="{StaticResource Caption}" />
-                    </Border>
-                    <TextBlock Style="{StaticResource Caption}" Foreground="{StaticResource Warn}" Margin="0,10,0,0" Visibility="{Binding RestartNote, Converter={StaticResource BoolToVis}}"
-                               Text="Переходы и свечение уже изменились; анимация переключателей изменится после перезапуска FrameLab." />
-                </StackPanel>
+            <TextBlock Style="{StaticResource PageSub}" Margin="0,6,0,28" Text="Настройте поведение интерфейса под себя. Выбор сохраняется на этом компьютере." />
+            <Border BorderBrush="{StaticResource Text}" BorderThickness="0,2,0,0" />
+            <Border Style="{StaticResource RowCard}" Padding="0,24">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="48" /><ColumnDefinition Width="*" /><ColumnDefinition Width="46" /></Grid.ColumnDefinitions>
+                    <TextBlock Text="01" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Margin="0,0,24,0">
+                        <TextBlock Text="Уменьшить анимации" Style="{StaticResource H1}" TextWrapping="Wrap" />
+                        <TextBlock Text="Страницы, строки и показатели появляются сразу, без плавных переходов." Style="{StaticResource MutedText}" Margin="0,8,0,0" />
+                    </StackPanel>
+                    <CheckBox Grid.Column="2" Style="{StaticResource Switch}" IsChecked="{Binding ReduceMotion}" VerticalAlignment="Center" ToolTip="Уменьшить анимации" AutomationProperties.Name="Уменьшить анимации" />
+                </Grid>
             </Border>
+            <Border Style="{StaticResource RowCard}" Padding="0,24">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="48" /><ColumnDefinition Width="*" /><ColumnDefinition Width="46" /></Grid.ColumnDefinitions>
+                    <TextBlock Text="02" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Margin="0,0,24,0">
+                        <TextBlock Text="Режим производительности" Style="{StaticResource H1}" TextWrapping="Wrap" />
+                        <TextBlock Text="Отключает анимации и дополнительные визуальные эффекты интерфейса. Полезно на слабом ПК." Style="{StaticResource MutedText}" Margin="0,8,0,0" />
+                    </StackPanel>
+                    <CheckBox Grid.Column="2" Style="{StaticResource Switch}" IsChecked="{Binding PerformanceMode}" VerticalAlignment="Center" ToolTip="Режим производительности" AutomationProperties.Name="Режим производительности" />
+                </Grid>
+            </Border>
+            <TextBlock Text="СИСТЕМНЫЕ ПАРАМЕТРЫ" Style="{StaticResource Kicker}" Margin="0,28,0,10" />
+            <TextBlock Text="{Binding SystemText}" Style="{StaticResource MutedText}" />
+            <TextBlock Style="{StaticResource Caption}" Foreground="{StaticResource Warn}" Margin="0,16,0,0" Visibility="{Binding RestartNote, Converter={StaticResource BoolToVis}}" Text="Настройки применены. Чтобы обновить анимации всех элементов управления, перезапустите FrameLab." />
         </StackPanel>
     </ScrollViewer>
 </UserControl>

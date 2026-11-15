@@ -51,9 +51,10 @@
                                 Background="{Binding Status, Converter={StaticResource StatusSoft}}">
                             <TextBlock Text="{Binding StatusLabel}" Style="{StaticResource TagText}" Foreground="{Binding Status, Converter={StaticResource StatusBrush}}" />
                         </Border>
-                        <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding CanSelect}" Content="{Binding Title}" FontWeight="SemiBold" FontSize="14.5" />
+                        <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding CanSelect}" DockPanel.Dock="Right" Style="{StaticResource Switch}" Margin="16,0,0,0" />
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource H1}" TextWrapping="Wrap" />
                     </DockPanel>
-                    <WrapPanel Margin="28,8,0,0">
+                    <WrapPanel Margin="0,8,0,0">
                         <Border Style="{StaticResource Tag}" Background="{Binding EffectValue, Converter={StaticResource EffectSoft}}">
                             <TextBlock Text="{Binding Effect}" Style="{StaticResource TagText}" Foreground="{Binding EffectValue, Converter={StaticResource EffectBrush}}" />
                         </Border>
@@ -73,17 +74,17 @@
                             <TextBlock Text="нужна перезагрузка" Style="{StaticResource TagText}" />
                         </Border>
                     </WrapPanel>
-                    <TextBlock Text="{Binding StatusText}" Margin="28,6,0,0" />
-                    <TextBlock Text="{Binding Explanation}" Style="{StaticResource MutedText}" Margin="28,4,0,0" />
-                    <TextBlock Text="{Binding Risk}" Style="{StaticResource Caption}" Margin="28,6,0,0" />
-                    <TextBlock Text="{Binding ManualSteps}" Style="{StaticResource MutedText}" Margin="28,6,0,0" Visibility="{Binding ManualSteps, Converter={StaticResource NullToCollapsed}}" />
-                    <DockPanel Margin="28,10,0,0" Visibility="{Binding CopyText, Converter={StaticResource NullToCollapsed}}">
+                    <TextBlock Text="{Binding StatusText}" Margin="0,6,0,0" />
+                    <TextBlock Text="{Binding Explanation}" Style="{StaticResource MutedText}" Margin="0,4,0,0" />
+                    <TextBlock Text="{Binding Risk}" Style="{StaticResource Caption}" Margin="0,6,0,0" />
+                    <TextBlock Text="{Binding ManualSteps}" Style="{StaticResource MutedText}" Margin="0,6,0,0" Visibility="{Binding ManualSteps, Converter={StaticResource NullToCollapsed}}" />
+                    <DockPanel Margin="0,10,0,0" Visibility="{Binding CopyText, Converter={StaticResource NullToCollapsed}}">
                         <Button DockPanel.Dock="Right" Content="Копировать" Tag="{StaticResource IconCopy}" Style="{StaticResource SecondaryIcon}" Margin="8,0,0,0"
                                 Command="{Binding DataContext.CopyCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding CopyText}" />
                         <TextBox Text="{Binding CopyText, Mode=OneWay}" IsReadOnly="True" FontFamily="{StaticResource MonoFont}" FontSize="12.5" />
                     </DockPanel>
-                    <Border Margin="28,12,0,0" Padding="12,8" CornerRadius="10" Background="{StaticResource OkSoft}"
+                    <Border Margin="0,12,0,0" Padding="12,8" CornerRadius="0" Background="{StaticResource OkSoft}"
                             Visibility="{Binding CanUndo, Converter={StaticResource BoolToVis}}">
                         <DockPanel>
                             <Button DockPanel.Dock="Right" Content="Отменить это изменение" Tag="{StaticResource IconUndo}" Style="{StaticResource UndoIcon}" Margin="8,0,0,0"
@@ -99,29 +100,25 @@
 
         <!-- GTA V graphics mode card: one of them is picked and applied at a time. -->
         <DataTemplate x:Key="GtaModeTemplate">
-            <RadioButton Style="{StaticResource ChoiceCard}" GroupName="gtamode" Margin="0,0,12,12" IsChecked="{Binding IsSelected, Mode=TwoWay}"
+            <RadioButton Style="{StaticResource ChoiceCard}" GroupName="gtamode" IsChecked="{Binding IsSelected, Mode=TwoWay}"
                          Command="{Binding DataContext.SelectModeCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">
-                <StackPanel>
-                    <DockPanel>
-                        <ContentControl Style="{StaticResource IconBadge}" Tag="{Binding Icon}" Width="40" Height="40" Margin="0,0,12,0" VerticalAlignment="Top" />
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Title}" Style="{StaticResource CardTitle}" TextWrapping="Wrap" />
-                            <TextBlock Text="{Binding Tagline}" Style="{StaticResource Caption}" TextWrapping="Wrap" />
-                        </StackPanel>
-                    </DockPanel>
-                    <WrapPanel Margin="0,12,0,0">
-                        <Border Style="{StaticResource Tag}" Background="{Binding EffectValue, Converter={StaticResource EffectSoft}}">
-                            <TextBlock Text="{Binding Effect}" Style="{StaticResource TagText}" Foreground="{Binding EffectValue, Converter={StaticResource EffectBrush}}" />
-                        </Border>
-                        <Border Style="{StaticResource Tag}" Background="{DynamicResource AccentSoft}" Visibility="{Binding IsRecommended, Converter={StaticResource BoolToVis}}">
-                            <TextBlock Text="Рекомендуем для вашего ПК" Style="{StaticResource TagText}" Foreground="{DynamicResource Accent}" />
-                        </Border>
-                        <Border Style="{StaticResource Tag}" Background="{StaticResource OkSoft}" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}">
-                            <TextBlock Text="✓ Сейчас включён" Style="{StaticResource TagText}" Foreground="{StaticResource Ok}" />
-                        </Border>
-                    </WrapPanel>
-                    <TextBlock Text="{Binding Explanation}" Style="{StaticResource MutedText}" Margin="0,8,0,0" />
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="52" /></Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,20,0">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource H1}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Tagline}" Style="{StaticResource Caption}" Margin="0,2,0,8" />
+                        <TextBlock Text="{Binding Explanation}" Style="{StaticResource MutedText}" TextWrapping="Wrap" />
+                        <WrapPanel Margin="0,10,0,0">
+                            <TextBlock Text="{Binding Effect}" Foreground="{Binding EffectValue, Converter={StaticResource EffectBrush}}" FontFamily="{StaticResource MonoFont}" FontSize="11" Margin="0,0,18,0" />
+                            <TextBlock Text="РЕКОМЕНДУЕТСЯ" Foreground="{DynamicResource Accent}" FontFamily="{StaticResource MonoFont}" FontSize="11" Margin="0,0,18,0" Visibility="{Binding IsRecommended, Converter={StaticResource BoolToVis}}" />
+                            <TextBlock Text="СЕЙЧАС ВКЛЮЧЁН" Foreground="{StaticResource Ok}" FontFamily="{StaticResource MonoFont}" FontSize="11" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}" />
+                        </WrapPanel>
+                    </StackPanel>
+                    <Border Grid.Column="1" Width="32" Height="32" BorderThickness="2" BorderBrush="{StaticResource Text}" VerticalAlignment="Center">
+                        <Border.Style><Style TargetType="Border"><Setter Property="Background" Value="Transparent" /><Style.Triggers><DataTrigger Binding="{Binding IsSelected}" Value="True"><Setter Property="Background" Value="{DynamicResource Accent}" /></DataTrigger></Style.Triggers></Style></Border.Style>
+                        <TextBlock Text="✓" FontSize="24" FontWeight="Bold" Foreground="{StaticResource Bg}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsSelected, Converter={StaticResource BoolToVis}}" />
+                    </Border>
+                </Grid>
             </RadioButton>
         </DataTemplate>
 
@@ -132,58 +129,56 @@
         </Style>
     </Window.Resources>
 
-    <Border x:Name="Root" BorderBrush="#BDB4A4" BorderThickness="1" Background="{StaticResource Bg}">
+    <Border x:Name="Root" BorderBrush="Transparent" BorderThickness="0" Background="{StaticResource Bg}">
     <Grid>
     <TabControl x:Name="Nav" Style="{StaticResource SideNav}" SelectedIndex="{Binding SelectedTab}" v:Fx.PageTransition="True">
 
         <!-- ===================== HOME (main menu) ===================== -->
         <TabItem Header="Главная" Tag="{StaticResource IconStar}" DataContext="{Binding Home}">
-            <ScrollViewer>
-                <StackPanel Margin="40,6,36,26">
-                    <TextBlock Text="FrameLab" Style="{StaticResource Kicker}" />
-                    <TextBlock Text="Главная" Style="{StaticResource PageTitle}" />
-                    <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,20" Text="Состояние ПК и оптимизация в один клик для Dota 2 и CS2. Тонкая настройка — на страницах игр, а твики Windows и пресеты других игр — в разделе «ПК»." />
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="36,20,40,28">
+                    <TextBlock Text="ОБЗОР СИСТЕМЫ" Style="{StaticResource Kicker}" />
+                    <TextBlock Text="Готов к игре" Style="{StaticResource PageTitle}" />
+                    <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,20"
+                               Text="Состояние ПК, производительность и игровые настройки — в одном месте. Каждое изменение можно проверить и отменить." />
 
-                    <!-- One-click optimisation -->
-                    <Border Style="{StaticResource Hero}" Padding="28,26">
+                    <Border Style="{StaticResource Hero}" Padding="22,20">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconBolt}" Width="64" Height="64" VerticalAlignment="Top" />
-                            <StackPanel Grid.Column="1" Margin="20,0,20,0" VerticalAlignment="Center">
+                            <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconBolt}" Width="48" Height="48" VerticalAlignment="Top" />
+                            <StackPanel Grid.Column="1" Margin="16,0,18,0" VerticalAlignment="Center">
                                 <TextBlock Text="Оптимизация в один клик" Style="{StaticResource H1}" />
-                                <TextBlock Style="{StaticResource MutedText}" Margin="0,6,0,0" TextWrapping="Wrap"
-                                           Text="Применит для всех установленных игр только то, что программа рекомендует для вашего ПК: пресет графики, параметры запуска, нужные настройки Windows." />
-                                <WrapPanel Margin="0,12,0,0">
-                                    <Border Style="{StaticResource Tag}" Background="{StaticResource OkSoft}" Margin="0,0,8,6"><TextBlock Text="Только безопасное" Style="{StaticResource TagText}" Foreground="{StaticResource Ok}" /></Border>
-                                    <Border Style="{StaticResource Tag}" Background="{StaticResource InfoSoft}" Margin="0,0,8,6"><TextBlock Text="Без перезагрузки" Style="{StaticResource TagText}" Foreground="{StaticResource Info}" /></Border>
-                                    <Border Style="{StaticResource Tag}" Background="{StaticResource NeutralSoft}" Margin="0,0,8,6"><TextBlock Text="Программы не закрываются" Style="{StaticResource TagText}" /></Border>
-                                    <Border Style="{StaticResource Tag}" Background="{StaticResource NeutralSoft}" Margin="0,0,8,6"><TextBlock Text="Всё отменяется" Style="{StaticResource TagText}" /></Border>
+                                <TextBlock Style="{StaticResource MutedText}" Margin="0,6,0,0"
+                                           Text="Подберёт рекомендованные настройки для установленных игр. Перед применением покажет каждый пункт и сохранит возможность отката." />
+                                <WrapPanel Margin="0,10,0,0">
+                                    <Border Style="{StaticResource Tag}" Background="{StaticResource OkSoft}"><TextBlock Text="БЕЗОПАСНО" Style="{StaticResource TagText}" Foreground="{StaticResource Ok}" /></Border>
+                                    <Border Style="{StaticResource Tag}"><TextBlock Text="ВСЁ ОТМЕНЯЕТСЯ" Style="{StaticResource TagText}" /></Border>
                                 </WrapPanel>
                             </StackPanel>
-                            <Button Grid.Column="2" Content="Оптимизировать" Tag="{StaticResource IconBolt}" Style="{StaticResource PrimaryIcon}" Command="{Binding OptimizeCommand}"
-                                    VerticalAlignment="Center" Padding="30,15" FontSize="16" />
+                            <Button Grid.Column="2" Content="Оптимизировать" Tag="{StaticResource IconBolt}" Style="{StaticResource PrimaryIcon}"
+                                    Command="{Binding OptimizeCommand}" VerticalAlignment="Center" Padding="24,14" FontSize="15" />
                         </Grid>
                     </Border>
 
-                    <TextBlock Text="{Binding Status}" Style="{StaticResource MutedText}" TextWrapping="Wrap" Margin="2,0,0,16" />
+                    <TextBlock Text="{Binding Status}" Style="{StaticResource MutedText}" TextWrapping="Wrap" Margin="2,0,0,12" />
 
-                    <Border Style="{StaticResource Card}" Margin="0,0,0,16" Visibility="{Binding HasReport, Converter={StaticResource BoolToVis}}">
+                    <Border Style="{StaticResource Card}" Padding="0,12" Visibility="{Binding HasReport, Converter={StaticResource BoolToVis}}">
                         <StackPanel>
-                            <DockPanel Margin="0,0,0,6">
+                            <DockPanel Margin="0,0,0,8">
                                 <Button DockPanel.Dock="Right" Content="Отменить всё" Tag="{StaticResource IconUndo}" Style="{StaticResource UndoIcon}" Command="{Binding UndoAllCommand}" />
-                                <TextBlock Text="Отчёт" Style="{StaticResource Section}" VerticalAlignment="Center" />
+                                <TextBlock Text="Последние изменения" Style="{StaticResource Section}" VerticalAlignment="Center" />
                             </DockPanel>
                             <ItemsControl ItemsSource="{Binding Report}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,8">
+                                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9">
                                             <DockPanel>
-                                                <Button DockPanel.Dock="Right" Content="Отменить" Tag="{StaticResource IconUndo}" Style="{StaticResource UndoIcon}" Margin="8,0,0,0" VerticalAlignment="Center"
-                                                        Visibility="{Binding CanUndo, Converter={StaticResource BoolToVis}}"
+                                                <Button DockPanel.Dock="Right" Content="Вернуть" Tag="{StaticResource IconUndo}" Style="{StaticResource UndoIcon}" Margin="8,0,0,0"
+                                                        VerticalAlignment="Center" Visibility="{Binding CanUndo, Converter={StaticResource BoolToVis}}"
                                                         Command="{Binding DataContext.UndoLineCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                         CommandParameter="{Binding}" />
                                                 <TextBlock Text="{Binding Text}" VerticalAlignment="Center" TextWrapping="Wrap" />
@@ -195,232 +190,155 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- Live load: rings ease to each new sample; sampling runs only while this page is open. -->
-                    <Border Style="{StaticResource Card}" DataContext="{Binding DataContext.Live, ElementName=Nav}" v:Fx.Appear="True">
+                    <Border Style="{StaticResource Card}" DataContext="{Binding DataContext.Live, ElementName=Nav}">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="1.6*" />
                             </Grid.ColumnDefinitions>
-                            <StackPanel HorizontalAlignment="Center">
-                                <Grid Width="92" Height="92">
-                                    <v:RingGauge Value="{Binding Cpu}" Thickness="8" Stroke="{DynamicResource AccentGradient}" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Cpu}" />
-                                </Grid>
-                                <TextBlock Text="Процессор" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
+                            <DockPanel Grid.Row="0" Grid.ColumnSpan="4" Margin="0,0,0,16">
+                                <TextBlock DockPanel.Dock="Right" Text="Живые данные" Style="{StaticResource Caption}" />
+                                <TextBlock Text="ПОКАЗАТЕЛИ СИСТЕМЫ" Style="{StaticResource Kicker}" />
+                            </DockPanel>
+                            <StackPanel Grid.Row="1" Margin="0,0,12,0">
+                                <TextBlock FontFamily="{StaticResource DisplayFont}" FontSize="30" FontWeight="Bold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Cpu}" />
+                                <ProgressBar Style="{StaticResource Progress}" Value="{Binding Cpu, Mode=OneWay}" Margin="0,8,0,10" />
+                                <TextBlock Text="Процессор" FontWeight="SemiBold" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                <Grid Width="92" Height="92">
-                                    <v:RingGauge Value="{Binding Gpu}" Thickness="8" Stroke="{DynamicResource AccentGradient}" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Gpu}" />
-                                </Grid>
-                                <TextBlock Text="Видеокарта" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
-                                <TextBlock Text="{Binding GpuText}" Style="{StaticResource Caption}" HorizontalAlignment="Center" />
+                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="12,0">
+                                <TextBlock FontFamily="{StaticResource DisplayFont}" FontSize="30" FontWeight="Bold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Gpu}" />
+                                <ProgressBar Style="{StaticResource Progress}" Value="{Binding Gpu, Mode=OneWay}" Margin="0,8,0,10" />
+                                <TextBlock Text="Видеокарта" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding GpuText}" Style="{StaticResource Caption}" />
                             </StackPanel>
-                            <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                                <Grid Width="92" Height="92">
-                                    <v:RingGauge Value="{Binding Ram}" Thickness="8" Stroke="{DynamicResource AccentGradient}" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Ram}" />
-                                </Grid>
-                                <TextBlock Text="Память" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
-                                <TextBlock Text="{Binding RamText}" Style="{StaticResource Caption}" HorizontalAlignment="Center" />
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="12,0">
+                                <TextBlock FontFamily="{StaticResource DisplayFont}" FontSize="30" FontWeight="Bold" Text="—" v:Fx.Format="0'%'" v:Fx.Number="{Binding Ram}" />
+                                <ProgressBar Style="{StaticResource Progress}" Value="{Binding Ram, Mode=OneWay}" Margin="0,8,0,10" />
+                                <TextBlock Text="Память" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding RamText}" Style="{StaticResource Caption}" />
                             </StackPanel>
-                            <StackPanel Grid.Column="3" HorizontalAlignment="Center">
-                                <Grid Width="92" Height="92">
-                                    <v:RingGauge Value="{Binding Temp}" Maximum="100" Thickness="8" Stroke="{StaticResource Warn}" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Text="—" v:Fx.Format="0'°'" v:Fx.Number="{Binding Temp}" />
-                                </Grid>
-                                <TextBlock Text="Температура" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
-                                <TextBlock Text="{Binding TempText}" Style="{StaticResource Caption}" HorizontalAlignment="Center" />
+                            <StackPanel Grid.Row="1" Grid.Column="3" Margin="12,0">
+                                <TextBlock FontFamily="{StaticResource DisplayFont}" FontSize="30" FontWeight="Bold" Text="—" v:Fx.Format="0'°'" v:Fx.Number="{Binding Temp}" />
+                                <ProgressBar Style="{StaticResource Progress}" Value="{Binding Temp, Mode=OneWay}" Margin="0,8,0,10" />
+                                <TextBlock Text="Температура" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding TempText}" Style="{StaticResource Caption}" />
                             </StackPanel>
-                            <StackPanel Grid.Column="4" Margin="18,0,0,0" VerticalAlignment="Center">
-                                <TextBlock Text="Загрузка процессора, 2 мин" Style="{StaticResource Caption}" Margin="0,0,0,6" />
-                                <Border Style="{StaticResource Inset}" Padding="8" Height="92">
+                            <StackPanel Grid.Row="2" Grid.ColumnSpan="4" Margin="0,20,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="НАГРУЗКА CPU · 2 МИН" Style="{StaticResource Kicker}" Margin="0,0,0,6" />
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,4" Height="62">
                                     <v:Sparkline Values="{Binding CpuHistory}" Stroke="{DynamicResource Accent}" Minimum="0" />
                                 </Border>
                             </StackPanel>
                         </Grid>
                     </Border>
 
-                    <Grid Margin="0,0,0,16">
+                    <Grid Margin="0,8,0,8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="16" />
+                            <ColumnDefinition Width="1" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <!-- PC -->
-                        <Border Style="{StaticResource Card}">
-                            <StackPanel>
-                                <DockPanel Margin="0,0,0,12">
-                                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconCpu}" Width="40" Height="40" Margin="0,0,14,0" />
-                                    <StackPanel VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding ProfileText}" Style="{StaticResource CardTitle}" />
-                                        <TextBlock Text="{Binding GpuText}" Style="{StaticResource Caption}" TextWrapping="Wrap" />
-                                    </StackPanel>
+                        <StackPanel Margin="0,0,22,0">
+                            <DockPanel Margin="0,0,0,8">
+                                <TextBlock Text="ВАШ ПК" Style="{StaticResource Kicker}" />
+                            </DockPanel>
+                            <TextBlock Text="{Binding GpuText}" Style="{StaticResource Caption}" Margin="0,0,0,8" />
+                            <TextBlock Text="{Binding ProfileText}" Style="{StaticResource H1}" Margin="0,0,0,8" />
+                            <StackPanel Visibility="{Binding Scanned, Converter={StaticResource BoolToVis}}">
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9"><DockPanel><TextBlock Text="ПРОЦЕССОР" Style="{StaticResource Kicker}" Width="104" /><TextBlock Text="{Binding CpuText}" TextTrimming="CharacterEllipsis" /></DockPanel></Border>
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9"><DockPanel><TextBlock Text="ПАМЯТЬ" Style="{StaticResource Kicker}" Width="104" /><TextBlock Text="{Binding RamText}" TextTrimming="CharacterEllipsis" /></DockPanel></Border>
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9"><DockPanel><TextBlock Text="МОНИТОР" Style="{StaticResource Kicker}" Width="104" /><TextBlock Text="{Binding DisplayText}" TextTrimming="CharacterEllipsis" /></DockPanel></Border>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Grid.Column="1" Background="{StaticResource BorderBrush}" />
+                        <StackPanel Grid.Column="2" Margin="22,0,0,0">
+                            <TextBlock Text="ИГРОВЫЕ ПРОФИЛИ" Style="{StaticResource Kicker}" Margin="0,0,0,8" />
+                            <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,10">
+                                <DockPanel>
+                                    <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}" Command="{Binding OpenPcCommand}" />
+                                    <TextBlock Text="ПК · Windows и другие игры" FontWeight="SemiBold" VerticalAlignment="Center" />
                                 </DockPanel>
-                                <StackPanel Visibility="{Binding Scanned, Converter={StaticResource BoolToVis}}">
-                                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9">
-                                        <DockPanel><TextBlock Text="Процессор" Foreground="{StaticResource Subtle}" Width="92" /><TextBlock Text="{Binding CpuText}" TextTrimming="CharacterEllipsis" /></DockPanel>
-                                    </Border>
-                                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9">
-                                        <DockPanel><TextBlock Text="Память" Foreground="{StaticResource Subtle}" Width="92" /><TextBlock Text="{Binding RamText}" TextTrimming="CharacterEllipsis" /></DockPanel>
-                                    </Border>
-                                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,9">
-                                        <DockPanel><TextBlock Text="Монитор" Foreground="{StaticResource Subtle}" Width="92" /><TextBlock Text="{Binding DisplayText}" TextTrimming="CharacterEllipsis" /></DockPanel>
-                                    </Border>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-
-                        <!-- Games -->
-                        <Border Grid.Column="2" Style="{StaticResource Card}">
-                            <StackPanel>
-                                <TextBlock Text="Игры" Style="{StaticResource Section}" Margin="0,0,0,8" />
-                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,10">
-                                    <DockPanel>
-                                        <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}" VerticalAlignment="Center"
-                                                Command="{Binding OpenPcCommand}" />
-                                        <Border Width="40" Height="40" CornerRadius="11" Margin="0,0,14,0" Background="{StaticResource PcTile}">
-                                            <TextBlock Text="ПК" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Foreground="#04201C" />
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding Games}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,10">
+                                            <DockPanel>
+                                                <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}"
+                                                        Command="{Binding DataContext.OpenGameCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />
+                                                <TextBlock Text="{Binding Monogram}" FontFamily="{StaticResource MonoFont}" FontSize="12" FontWeight="Bold" Foreground="{DynamicResource Accent}" Width="48" VerticalAlignment="Center" />
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                                                    <TextBlock Text="{Binding State}" Style="{StaticResource Caption}" />
+                                                </StackPanel>
+                                            </DockPanel>
                                         </Border>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="Windows и другие игры" FontWeight="SemiBold" />
-                                            <TextBlock Text="Твики системы, игровой режим, Fortnite, Valorant, Minecraft, Apex, бенчмарк" Style="{StaticResource Caption}" TextTrimming="CharacterEllipsis" />
-                                        </StackPanel>
-                                    </DockPanel>
-                                </Border>
-                                <ItemsControl ItemsSource="{Binding Games}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,10">
-                                                <DockPanel>
-                                                    <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}" VerticalAlignment="Center"
-                                                            Command="{Binding DataContext.OpenGameCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />
-                                                    <Border Width="40" Height="40" CornerRadius="11" Margin="0,0,14,0">
-                                                        <Border.Style>
-                                                            <Style TargetType="Border">
-                                                                <Setter Property="Background" Value="{StaticResource DotaTile}" />
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding IsCs2}" Value="True">
-                                                                        <Setter Property="Background" Value="{StaticResource Cs2Tile}" />
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <TextBlock Text="{Binding Monogram}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="TextBlock">
-                                                                    <Setter Property="Foreground" Value="White" />
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding IsCs2}" Value="True">
-                                                                            <Setter Property="Foreground" Value="#2A1A04" />
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
-                                                    </Border>
-                                                    <StackPanel VerticalAlignment="Center">
-                                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
-                                                        <TextBlock Text="{Binding State}" Style="{StaticResource Caption}" />
-                                                    </StackPanel>
-                                                </DockPanel>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,10">
-                                    <DockPanel>
-                                        <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}" VerticalAlignment="Center"
-                                                Command="{Binding OpenGtaCommand}" />
-                                        <Border Width="40" Height="40" CornerRadius="11" Margin="0,0,14,0" Background="{StaticResource GtaTile}">
-                                            <TextBlock Text="RP" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Foreground="White" />
-                                        </Border>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="GTA V · RP" FontWeight="SemiBold" />
-                                            <TextBlock Text="{Binding GtaState}" Style="{StaticResource Caption}" TextTrimming="CharacterEllipsis" />
-                                        </StackPanel>
-                                    </DockPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,10">
+                                <DockPanel>
+                                    <Button DockPanel.Dock="Right" Content="Открыть" Tag="{StaticResource IconChevron}" Style="{StaticResource GhostIcon}" Command="{Binding OpenGtaCommand}" />
+                                    <TextBlock Text="GTA V · RP" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding GtaState}" Style="{StaticResource Caption}" Margin="12,0,0,0" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Border>
+                        </StackPanel>
                     </Grid>
 
+                    <TextBlock Text="ИНСТРУМЕНТЫ" Style="{StaticResource Kicker}" Margin="0,16,0,8" />
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="16" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="16" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" /><ColumnDefinition Width="1" /><ColumnDefinition Width="*" /><ColumnDefinition Width="1" /><ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <!-- Session boost -->
-                        <Border Style="{StaticResource Card}">
-                            <StackPanel>
-                                <DockPanel Margin="0,0,0,10">
-                                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconPlay}" Width="38" Height="38" Margin="0,0,12,0" />
-                                    <TextBlock Text="Ускорение на время игры" Style="{StaticResource CardTitle}" VerticalAlignment="Center" TextWrapping="Wrap" />
-                                </DockPanel>
-                                <TextBlock Style="{StaticResource MutedText}" TextWrapping="Wrap"
-                                           Text="Как игровой режим Game Booster: пока идёт Dota 2 или CS2, включается план питания «Высокая производительность», после игры возвращается прежний. Программы не закрываются." />
-                                <CheckBox Style="{StaticResource Switch}" Content="Включено" IsChecked="{Binding BoostEnabled}" Margin="0,12,0,0" />
-                                <TextBlock Text="{Binding BoostState}" Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="0,8,0,0" />
-                            </StackPanel>
-                        </Border>
-
-                        <!-- Background apps -->
-                        <Border Grid.Column="2" Style="{StaticResource Card}">
-                            <StackPanel>
-                                <DockPanel Margin="0,0,0,10">
-                                    <Button DockPanel.Dock="Right" Content="" Tag="{StaticResource IconRefresh}" Style="{StaticResource GhostIcon}" ToolTip="Обновить" Command="{Binding RefreshBackgroundCommand}" Padding="8" />
-                                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconPulse}" Width="38" Height="38" Margin="0,0,12,0" />
-                                    <TextBlock Text="Мешают игре сейчас" Style="{StaticResource CardTitle}" VerticalAlignment="Center" TextWrapping="Wrap" />
-                                </DockPanel>
-                                <TextBlock Text="Тяжёлых фоновых программ не найдено." Style="{StaticResource MutedText}" Visibility="{Binding HasBackground, Converter={StaticResource NotVis}}" />
-                                <ItemsControl ItemsSource="{Binding Background}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Margin="0,0,0,10" ToolTip="{Binding App.Advice}">
-                                                <TextBlock FontWeight="SemiBold" TextTrimming="CharacterEllipsis">
-                                                    <Run Text="{Binding App.DisplayName, Mode=OneWay}" /><Run Text=" · " Foreground="{StaticResource Subtle}" /><Run Text="{Binding WorkingSetMb, Mode=OneWay}" Foreground="{StaticResource Subtle}" /><Run Text=" МБ" Foreground="{StaticResource Subtle}" />
-                                                </TextBlock>
-                                                <TextBlock Text="{Binding App.Advice}" Style="{StaticResource Caption}" TextWrapping="Wrap" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <TextBlock Text="Программа только подсказывает — закрывать или нет, решаете вы." Style="{StaticResource Caption}" TextWrapping="Wrap" />
-                            </StackPanel>
-                        </Border>
-
-                        <!-- Temp files -->
-                        <Border Grid.Column="4" Style="{StaticResource Card}">
-                            <StackPanel>
-                                <DockPanel Margin="0,0,0,10">
-                                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconTrash}" Width="38" Height="38" Margin="0,0,12,0" />
-                                    <TextBlock Text="Временные файлы" Style="{StaticResource CardTitle}" VerticalAlignment="Center" />
-                                </DockPanel>
-                                <TextBlock Text="{Binding TempText}" FontWeight="SemiBold" />
-                                <TextBlock Style="{StaticResource MutedText}" TextWrapping="Wrap" Margin="0,4,0,0"
-                                           Text="Файлы из папки TEMP старше суток — то же, что «Очистка диска». Используемые файлы пропускаются." />
-                                <Button Content="Очистить" Tag="{StaticResource IconTrash}" Style="{StaticResource SecondaryIcon}" HorizontalAlignment="Left" Margin="0,12,0,0" Command="{Binding CleanTempCommand}" />
-                            </StackPanel>
-                        </Border>
+                        <StackPanel Margin="0,0,18,0">
+                            <TextBlock Text="Игровой режим" Style="{StaticResource CardTitle}" />
+                            <TextBlock Text="Включает профиль питания на время игры и возвращает прежний после выхода." Style="{StaticResource MutedText}" Margin="0,4,0,8" />
+                            <CheckBox Style="{StaticResource Switch}" Content="Включено" IsChecked="{Binding BoostEnabled}" />
+                            <TextBlock Text="{Binding BoostState}" Style="{StaticResource Caption}" Margin="0,4,0,0" />
+                        </StackPanel>
+                        <Border Grid.Column="1" Background="{StaticResource BorderBrush}" />
+                        <StackPanel Grid.Column="2" Margin="18,0">
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Content="" Tag="{StaticResource IconRefresh}" Style="{StaticResource GhostIcon}" ToolTip="Обновить" Command="{Binding RefreshBackgroundCommand}" Padding="8" />
+                                <TextBlock Text="Фоновые программы" Style="{StaticResource CardTitle}" />
+                            </DockPanel>
+                            <TextBlock Text="Список тяжёлых приложений и советы по настройке." Style="{StaticResource MutedText}" Margin="0,4,0,8" />
+                            <ItemsControl ItemsSource="{Binding Background}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,5">
+                                            <DockPanel>
+                                                <TextBlock FontWeight="SemiBold"><Run Text="{Binding App.DisplayName}" /><Run Text=" · " Foreground="{StaticResource Subtle}" /><Run Text="{Binding WorkingSetMb}" Foreground="{StaticResource Subtle}" /><Run Text=" МБ" Foreground="{StaticResource Subtle}" /></TextBlock>
+                                            </DockPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                        <Border Grid.Column="3" Background="{StaticResource BorderBrush}" />
+                        <StackPanel Grid.Column="4" Margin="18,0,0,0">
+                            <TextBlock Text="Временные файлы" Style="{StaticResource CardTitle}" />
+                            <TextBlock Text="{Binding TempText}" FontWeight="SemiBold" Margin="0,4,0,0" />
+                            <TextBlock Text="Старые файлы из папки TEMP. Используемые файлы пропускаются." Style="{StaticResource MutedText}" Margin="0,4,0,8" />
+                            <Button Content="Очистить" Tag="{StaticResource IconTrash}" Style="{StaticResource SecondaryIcon}" HorizontalAlignment="Left" Command="{Binding CleanTempCommand}" />
+                        </StackPanel>
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
-
         <TabItem Header="{Binding SectionTitle}" Style="{StaticResource NavSection}" />
 
         <!-- ===================== OPTIMIZE (wizard) ===================== -->
         <TabItem Header="Оптимизация" Tag="{StaticResource IconBolt}" DataContext="{Binding Current.Wizard}" Visibility="{Binding DataContext.IsGamePages, ElementName=Nav, Converter={StaticResource BoolToVis}}">
-            <Grid Margin="40,6,36,22">
+            <Grid Margin="{StaticResource Margin.Page}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -448,7 +366,7 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Style="{StaticResource StepButton}" Tag="0">
                             <StackPanel Orientation="Horizontal">
-                                <Border Width="32" Height="32" CornerRadius="16" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=0}">
+                                <Border Width="32" Height="32" CornerRadius="0" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=0}">
                                     <TextBlock Text="{Binding Step, Converter={StaticResource StepGlyph}, ConverterParameter=0}" Foreground="{Binding Step, Converter={StaticResource StepText}, ConverterParameter=0}"
                                                HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
                                 </Border>
@@ -461,7 +379,7 @@
                         <Rectangle Grid.Column="1" Height="2" RadiusX="1" RadiusY="1" Margin="16,0" Fill="{Binding Step, Converter={StaticResource StepLine}, ConverterParameter=0}" />
                         <Button Grid.Column="2" Style="{StaticResource StepButton}" Tag="1">
                             <StackPanel Orientation="Horizontal">
-                                <Border Width="32" Height="32" CornerRadius="16" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=1}">
+                                <Border Width="32" Height="32" CornerRadius="0" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=1}">
                                     <TextBlock Text="{Binding Step, Converter={StaticResource StepGlyph}, ConverterParameter=1}" Foreground="{Binding Step, Converter={StaticResource StepText}, ConverterParameter=1}"
                                                HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
                                 </Border>
@@ -474,7 +392,7 @@
                         <Rectangle Grid.Column="3" Height="2" RadiusX="1" RadiusY="1" Margin="16,0" Fill="{Binding Step, Converter={StaticResource StepLine}, ConverterParameter=1}" />
                         <Button Grid.Column="4" Style="{StaticResource StepButton}" Tag="2">
                             <StackPanel Orientation="Horizontal">
-                                <Border Width="32" Height="32" CornerRadius="16" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=2}">
+                                <Border Width="32" Height="32" CornerRadius="0" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=2}">
                                     <TextBlock Text="{Binding Step, Converter={StaticResource StepGlyph}, ConverterParameter=2}" Foreground="{Binding Step, Converter={StaticResource StepText}, ConverterParameter=2}"
                                                HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
                                 </Border>
@@ -487,7 +405,7 @@
                         <Rectangle Grid.Column="5" Height="2" RadiusX="1" RadiusY="1" Margin="16,0" Fill="{Binding Step, Converter={StaticResource StepLine}, ConverterParameter=2}" />
                         <Button Grid.Column="6" Style="{StaticResource StepButton}" Tag="3">
                             <StackPanel Orientation="Horizontal">
-                                <Border Width="32" Height="32" CornerRadius="16" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=3}">
+                                <Border Width="32" Height="32" CornerRadius="0" Background="{Binding Step, Converter={StaticResource StepFill}, ConverterParameter=3}">
                                     <TextBlock Text="{Binding Step, Converter={StaticResource StepGlyph}, ConverterParameter=3}" Foreground="{Binding Step, Converter={StaticResource StepText}, ConverterParameter=3}"
                                                HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
                                 </Border>
@@ -893,7 +811,7 @@
         <!-- ===================== KNOWN ISSUES ===================== -->
         <TabItem Header="Проблемы" Tag="{StaticResource IconAlert}" DataContext="{Binding Current.Issues}" Visibility="{Binding DataContext.IsGamePages, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,30,28">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <Grid Margin="0,0,0,20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -972,7 +890,7 @@
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <Border Width="24" Height="24" CornerRadius="12" Background="{StaticResource PanelAlt}" BorderBrush="{StaticResource BorderStrong}" BorderThickness="1" VerticalAlignment="Top">
+                                                        <Border Width="24" Height="24" CornerRadius="0" Background="{StaticResource PanelAlt}" BorderBrush="{StaticResource BorderStrong}" BorderThickness="1" VerticalAlignment="Top">
                                                             <TextBlock Text="{Binding Number}" FontSize="11.5" FontWeight="Bold" Foreground="{StaticResource Muted}" HorizontalAlignment="Center" VerticalAlignment="Center" LineHeight="14" />
                                                         </Border>
                                                         <TextBlock Grid.Column="1" Text="{Binding Text}" Margin="12,2,0,0" />
@@ -1062,7 +980,7 @@
         <!-- ===================== MATCH MONITOR ===================== -->
         <TabItem Header="Монитор матча" Tag="{StaticResource IconPulse}" DataContext="{Binding Current.Monitor}" Visibility="{Binding DataContext.IsGamePages, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,30,28">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <StackPanel Margin="0,0,0,20">
                         <TextBlock Text="{Binding GameName}" Style="{StaticResource Kicker}" />
                         <TextBlock Text="Монитор матча" Style="{StaticResource PageTitle}" />
@@ -1162,7 +1080,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Margin="0,0,4,0" Width="16" ToolTip="{Binding Tooltip}" VerticalAlignment="Bottom">
-                                                        <Border Height="{Binding Height}" CornerRadius="4,4,1,1" Background="{DynamicResource BarGradient}" VerticalAlignment="Bottom" />
+                                                        <Border Height="{Binding Height}" CornerRadius="0" Background="{DynamicResource BarGradient}" VerticalAlignment="Bottom" />
                                                         <TextBlock Text="{Binding Label}" Style="{StaticResource Caption}" FontSize="9.5" HorizontalAlignment="Center" TextWrapping="NoWrap" Margin="0,4,0,0" />
                                                     </StackPanel>
                                                 </DataTemplate>
@@ -1182,7 +1100,7 @@
         <!-- ===================== CRASHES ===================== -->
         <TabItem Header="Вылеты и сбои" Tag="{StaticResource IconShield}" DataContext="{Binding Current.Crash}" Visibility="{Binding DataContext.IsGamePages, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,30,28">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <StackPanel Margin="0,0,0,20">
                         <TextBlock Text="{Binding GameName}" Style="{StaticResource Kicker}" />
                         <TextBlock Text="Вылеты и сбои" Style="{StaticResource PageTitle}" />
@@ -1384,7 +1302,7 @@
         <TabItem Header="Режимы графики" Tag="{StaticResource IconSliders}" DataContext="{Binding Gta}"
                  Visibility="{Binding DataContext.IsGta, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,36,26">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <TextBlock Text="GTA V · RP-проекты" Style="{StaticResource Kicker}" />
                     <TextBlock Text="Режимы графики" Style="{StaticResource PageTitle}" />
                     <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,8"
@@ -1432,7 +1350,7 @@
                         </Grid>
                     </Border>
 
-                    <Border Padding="16,12" CornerRadius="12" Background="{StaticResource WarnSoft}" Margin="0,0,0,14"
+                    <Border Padding="16,12" CornerRadius="0" Background="{StaticResource WarnSoft}" Margin="0,0,0,14"
                             Visibility="{Binding GameRunning, Converter={StaticResource BoolToVis}}">
                         <DockPanel>
                             <ContentControl Style="{StaticResource Icon}" Tag="{StaticResource IconAlert}" Foreground="{StaticResource Warn}" Margin="0,1,10,0" VerticalAlignment="Top" />
@@ -1469,23 +1387,11 @@
 
                     <TextBlock Text="По мощности ПК" Style="{StaticResource Section}" />
                     <TextBlock Text="Больше FPS ценой картинки. Текстуры дополнительно ограничиваются объёмом видеопамяти." Style="{StaticResource Caption}" Margin="0,2,0,10" />
-                    <ItemsControl ItemsSource="{Binding PerformanceModes}" ItemTemplate="{StaticResource GtaModeTemplate}" Margin="0,0,-12,0">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="3" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                    <ItemsControl ItemsSource="{Binding PerformanceModes}" ItemTemplate="{StaticResource GtaModeTemplate}" Margin="0,0,0,16" />
 
                     <TextBlock Text="Для РП" Style="{StaticResource Section}" Margin="0,10,0,0" />
                     <TextBlock Text="Красивая картинка для отыгрыша — или золотая середина между картинкой и FPS." Style="{StaticResource Caption}" Margin="0,2,0,10" />
-                    <ItemsControl ItemsSource="{Binding RoleplayModes}" ItemTemplate="{StaticResource GtaModeTemplate}" Margin="0,0,-12,0">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="2" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                    <ItemsControl ItemsSource="{Binding RoleplayModes}" ItemTemplate="{StaticResource GtaModeTemplate}" Margin="0,0,0,16" />
 
                     <!-- Apply bar -->
                     <Border Style="{StaticResource Card}" Margin="0,6,0,12">
@@ -1566,13 +1472,13 @@
         <TabItem Header="Редуксы" Tag="{StaticResource IconFolder}" DataContext="{Binding Gta.Redux}"
                  Visibility="{Binding DataContext.IsGta, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,36,26">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <TextBlock Text="GTA V · графические моды" Style="{StaticResource Kicker}" />
                     <TextBlock Text="Редуксы" Style="{StaticResource PageTitle}" />
                     <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,20"
                                Text="Установка графического пака в папку GTA V с резервной копией. Перед копированием пак проверяется: видно, что встанет, что заблокировано и почему. Удаление возвращает оригинальные файлы игры." />
 
-                    <Border Padding="18,14" CornerRadius="14" Background="{StaticResource CritSoft}" Margin="0,0,0,14">
+                    <Border Padding="18,14" CornerRadius="0" Background="{StaticResource CritSoft}" Margin="0,0,0,14">
                         <DockPanel>
                             <ContentControl Style="{StaticResource Icon}" Tag="{StaticResource IconShield}" Foreground="{StaticResource Crit}" Margin="0,1,12,0" VerticalAlignment="Top" />
                             <StackPanel>
@@ -1583,7 +1489,7 @@
                         </DockPanel>
                     </Border>
 
-                    <Border Padding="18,12" CornerRadius="14" Background="{StaticResource WarnSoft}" Margin="0,0,0,14"
+                    <Border Padding="18,12" CornerRadius="0" Background="{StaticResource WarnSoft}" Margin="0,0,0,14"
                             Visibility="{Binding HasUnfinished, Converter={StaticResource BoolToVis}}">
                         <DockPanel>
                             <ContentControl Style="{StaticResource Icon}" Tag="{StaticResource IconAlert}" Foreground="{StaticResource Warn}" Margin="0,1,10,0" VerticalAlignment="Top" />
@@ -1751,7 +1657,7 @@
                     <ItemsControl ItemsSource="{Binding Installed}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Padding="18,14" CornerRadius="14" BorderThickness="1" Margin="0,0,0,10">
+                                <Border Padding="18,14" CornerRadius="0" BorderThickness="1" Margin="0,0,0,10">
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background" Value="{StaticResource Panel}" />
@@ -1785,7 +1691,7 @@
         <TabItem Header="Диагностика" Tag="{StaticResource IconPulse}" DataContext="{Binding Gta}"
                  Visibility="{Binding DataContext.IsGta, ElementName=Nav, Converter={StaticResource BoolToVis}}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,36,26">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <TextBlock Text="GTA V · RP-проекты" Style="{StaticResource Kicker}" />
                     <TextBlock Text="Диагностика" Style="{StaticResource PageTitle}" />
                     <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,18"
@@ -1836,7 +1742,7 @@
 
         <TabItem Header="Сеть" Tag="{StaticResource IconWifi}" DataContext="{Binding Network}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,30,28">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <StackPanel Margin="0,0,0,20">
                         <TextBlock Text="Для всех игр" Style="{StaticResource Kicker}" />
                         <TextBlock Text="Сеть и пинг" Style="{StaticResource PageTitle}" />
@@ -1930,7 +1836,7 @@
                                 </Border>
                                 <Button Content="Сменить DNS" Command="{Binding ChangeDnsCommand}" Margin="0,0,0,6" VerticalAlignment="Center" />
                             </WrapPanel>
-                            <Border Padding="12,8" CornerRadius="10" Background="{StaticResource OkSoft}" Margin="0,8,0,0" Visibility="{Binding DnsChangedText, Converter={StaticResource NullToCollapsed}}">
+                            <Border Padding="12,8" CornerRadius="0" Background="{StaticResource OkSoft}" Margin="0,8,0,0" Visibility="{Binding DnsChangedText, Converter={StaticResource NullToCollapsed}}">
                                 <DockPanel>
                                     <Button DockPanel.Dock="Right" Content="Отменить смену DNS" Tag="{StaticResource IconUndo}" Style="{StaticResource UndoIcon}" Command="{Binding UndoDnsCommand}" Margin="8,0,0,0" />
                                     <ContentControl Style="{StaticResource Icon}" Tag="{StaticResource IconCheck}" Foreground="{StaticResource Ok}" Margin="0,0,8,0" />
@@ -1958,8 +1864,8 @@
                                                 <TextBlock Text="{Binding Label}" FontWeight="SemiBold" TextWrapping="NoWrap" />
                                                 <TextBlock Text="{Binding Server}" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" />
                                             </StackPanel>
-                                            <Border Grid.Column="1" Height="8" CornerRadius="4" Background="{StaticResource NeutralSoft}" VerticalAlignment="Center">
-                                                <Border HorizontalAlignment="Left" CornerRadius="4" Background="{DynamicResource BarGradient}" v:Fx.Appear="True">
+                                            <Border Grid.Column="1" Height="8" CornerRadius="0" Background="{StaticResource NeutralSoft}" VerticalAlignment="Center">
+                                                <Border HorizontalAlignment="Left" CornerRadius="0" Background="{DynamicResource BarGradient}" v:Fx.Appear="True">
                                                     <Border.Width>
                                                         <MultiBinding Converter="{StaticResource FractionWidth}">
                                                             <Binding Path="Bar" />
@@ -2006,7 +1912,7 @@
         <!-- ===================== ROLLBACK ===================== -->
         <TabItem Header="Откат" Tag="{StaticResource IconUndo}" DataContext="{Binding Rollback}">
             <ScrollViewer>
-                <StackPanel Margin="40,6,30,28">
+                <StackPanel Margin="{StaticResource Margin.Page}">
                     <Grid Margin="0,0,0,20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -2106,7 +2012,7 @@
 
         <!-- ===================== ABOUT ===================== -->
         <TabItem Header="О программе" Tag="{StaticResource IconInfo}" DataContext="{Binding About}">
-            <Grid Margin="40,6,36,24">
+            <Grid Margin="{StaticResource Margin.Page}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -2118,9 +2024,9 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Border Width="72" Height="72" CornerRadius="18">
+                            <Border Width="72" Height="72" CornerRadius="0">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="pack://application:,,,/Assets/logo.png" Stretch="UniformToFill" />
+                                    <ImageBrush ImageSource="pack://application:,,,/FrameLab;component/Assets/logo.png" Stretch="UniformToFill" />
                                 </Border.Background>
                             </Border>
                             <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">

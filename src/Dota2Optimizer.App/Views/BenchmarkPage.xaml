@@ -31,20 +31,20 @@
 
             <Border Style="{StaticResource Hero}" Margin="0,0,0,14">
                 <Grid>
-                    <Grid.ColumnDefinitions><ColumnDefinition Width="1.15*" /><ColumnDefinition Width="18" /><ColumnDefinition Width="0.85*" /></Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="0.9*" /><ColumnDefinition Width="28" /><ColumnDefinition Width="1.1*" /></Grid.ColumnDefinitions>
                     <StackPanel>
                         <TextBlock Text="СИНТЕТИЧЕСКАЯ СЦЕНА · FRAME LAB" Style="{StaticResource Overline}" />
-                        <TextBlock Text="Проверка без игры" Style="{StaticResource CardTitle}" Margin="0,5,0,4" />
+                        <TextBlock Text="Проверка без игры" Style="{StaticResource H1}" Margin="0,8,0,10" TextWrapping="Wrap" />
                         <TextBlock Style="{StaticResource MutedText}" TextWrapping="Wrap" Text="Одинаковая сцена с освещением и движущимися объектами. Полезна для сравнения настроек на одном ПК. Результат не равен FPS в Dota 2, CS2 или другой игре." />
-                        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
-                            <Button x:Name="SyntheticStart" Content="Запустить тест · 30 с" Tag="{StaticResource IconPlay}" Style="{StaticResource PrimaryIcon}" Click="SyntheticStart_Click" />
-                            <Button x:Name="SyntheticStop" Content="Остановить" Tag="{StaticResource IconStop}" Style="{StaticResource GhostIcon}" Click="SyntheticStop_Click" IsEnabled="False" />
+                        <Button x:Name="SyntheticStart" Content="Запустить тест · 30 с" Tag="{StaticResource IconPlay}" Style="{StaticResource PrimaryIcon}" Click="SyntheticStart_Click" HorizontalAlignment="Left" Margin="0,20,0,4" />
+                        <WrapPanel>
+                            <Button x:Name="SyntheticStop" Content="Остановить" Tag="{StaticResource IconStop}" Style="{StaticResource GhostIcon}" Click="SyntheticStop_Click" IsEnabled="False" Margin="0" />
                             <TextBlock x:Name="SyntheticLabel" Text="До изменений" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0" />
-                        </StackPanel>
+                        </WrapPanel>
                         <ProgressBar x:Name="SyntheticProgress" Style="{StaticResource Progress}" Maximum="1" Height="5" Margin="0,12,0,0" />
                         <TextBlock x:Name="SyntheticStatus" Text="Подготовьте одинаковое состояние системы перед каждым прогоном." Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap" />
                     </StackPanel>
-                    <Border Grid.Column="2" Style="{StaticResource Inset}" Height="224" ClipToBounds="True">
+                    <Border Grid.Column="2" Background="#22252F" Padding="0" MinHeight="280" ClipToBounds="True">
                         <Viewport3D x:Name="SyntheticViewport" ClipToBounds="True" />
                     </Border>
                 </Grid>
@@ -145,8 +145,8 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding Metric}" FontWeight="SemiBold" VerticalAlignment="Center" />
                                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                        <Border Height="6" CornerRadius="3" Background="{StaticResource NeutralSoft}" Margin="0,0,0,4">
-                                            <Border HorizontalAlignment="Left" CornerRadius="3" Background="{StaticResource Subtle}" v:Fx.Appear="True">
+                                        <Border Height="6" CornerRadius="0" Background="{StaticResource NeutralSoft}" Margin="0,0,0,4">
+                                            <Border HorizontalAlignment="Left" CornerRadius="0" Background="{StaticResource Subtle}" v:Fx.Appear="True">
                                                 <Border.Width>
                                                     <MultiBinding Converter="{StaticResource FractionWidth}">
                                                         <Binding Path="BeforeBar" />
@@ -155,8 +155,8 @@
                                                 </Border.Width>
                                             </Border>
                                         </Border>
-                                        <Border Height="6" CornerRadius="3" Background="{StaticResource NeutralSoft}">
-                                            <Border HorizontalAlignment="Left" CornerRadius="3" Background="{DynamicResource BarGradient}" v:Fx.Appear="True">
+                                        <Border Height="6" CornerRadius="0" Background="{StaticResource NeutralSoft}">
+                                            <Border HorizontalAlignment="Left" CornerRadius="0" Background="{DynamicResource BarGradient}" v:Fx.Appear="True">
                                                 <Border.Width>
                                                     <MultiBinding Converter="{StaticResource FractionWidth}">
                                                         <Binding Path="AfterBar" />

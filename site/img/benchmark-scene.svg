@@ -6,24 +6,24 @@
     <linearGradient id="accent" x2="1" y2="1"><stop stop-color="#ff7858"/><stop offset="1" stop-color="#e8380d"/></linearGradient>
     <linearGradient id="window" x2="0" y2="1"><stop stop-color="#1d202a"/><stop offset="1" stop-color="#14161d"/></linearGradient>
   </defs>
-  <rect width="1440" height="900" fill="#f3f0e8"/>
-  <rect width="1440" height="48" fill="#f3f0e8" stroke="#141414" stroke-width="2"/>
-  <text x="28" y="31" font-family="Segoe UI,Arial" font-size="15" font-weight="800" letter-spacing="3" fill="#141414">FRAMELAB</text>
-  <text x="152" y="30" font-family="Consolas,monospace" font-size="11" letter-spacing="1.5" fill="#6b665b">ИНСТРУМЕНТЫ / БЕНЧМАРК</text>
-  <text x="1310" y="30" font-family="Consolas,monospace" font-size="10" letter-spacing="1.2" fill="#6b665b">ОФФЛАЙН</text>
-  <text x="72" y="122" font-family="Consolas,monospace" font-size="12" letter-spacing="2" fill="#6b665b">ПРОВЕРКА ПРОИЗВОДИТЕЛЬНОСТИ</text>
-  <text x="72" y="178" font-family="Segoe UI,Arial" font-size="42" font-weight="700" fill="#141414">Бенчмарк до/после</text>
-  <text x="72" y="216" font-family="Segoe UI,Arial" font-size="17" fill="#4a463e">Сравните одинаковую 3D-сцену без запуска игры</text>
-  <text x="1125" y="216" font-family="Consolas,monospace" font-size="10" letter-spacing="1" fill="#6b665b">ПРИМЕР ДАННЫХ</text>
-  <rect x="72" y="252" width="1296" height="372" fill="#f8f6f0" stroke="#141414" stroke-width="2"/>
-  <text x="104" y="294" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#6b665b">СИНТЕТИЧЕСКАЯ СЦЕНА · FRAME LAB</text>
-  <text x="104" y="338" font-family="Segoe UI,Arial" font-size="28" font-weight="650" fill="#141414">Проверка без игры</text>
-  <text x="104" y="371" font-family="Segoe UI,Arial" font-size="15" fill="#4a463e">Фиксированная сцена с освещением и движущимися объектами.</text>
-  <text x="104" y="396" font-family="Segoe UI,Arial" font-size="15" fill="#4a463e">Результат помогает сравнить настройки на одном ПК.</text>
-  <rect x="104" y="430" width="240" height="54" fill="#141414"/>
-  <text x="224" y="464" text-anchor="middle" font-family="Segoe UI,Arial" font-size="16" font-weight="700" fill="#f3f0e8">Запустить тест · 30 с</text>
-  <text x="104" y="523" font-family="Segoe UI,Arial" font-size="13" fill="#6b665b">Результат тестовой сцены не равен FPS в конкретной игре.</text>
-  <text x="104" y="576" font-family="Consolas,monospace" font-size="11" letter-spacing="1" fill="#2f6b3c">● ГОТОВ К ЗАМЕРУ</text>
+  <rect width="1440" height="900" fill="#d8d2c6"/>
+  <rect width="1440" height="48" fill="#d8d2c6" stroke="#918878" stroke-width="1"/>
+  <text x="28" y="31" font-family="Segoe UI,Arial" font-size="15" font-weight="800" letter-spacing="3" fill="#26241F">FRAMELAB</text>
+  <text x="152" y="30" font-family="Consolas,monospace" font-size="11" letter-spacing="1.5" fill="#716B60">ИНСТРУМЕНТЫ / БЕНЧМАРК</text>
+  <text x="1310" y="30" font-family="Consolas,monospace" font-size="10" letter-spacing="1.2" fill="#716B60">ОФФЛАЙН</text>
+  <text x="72" y="122" font-family="Consolas,monospace" font-size="12" letter-spacing="2" fill="#716B60">ПРОВЕРКА ПРОИЗВОДИТЕЛЬНОСТИ</text>
+  <text x="72" y="178" font-family="Segoe UI,Arial" font-size="42" font-weight="700" fill="#26241F">Бенчмарк до/после</text>
+  <text x="72" y="216" font-family="Segoe UI,Arial" font-size="17" fill="#514D44">Сравните одинаковую 3D-сцену без запуска игры</text>
+  <text x="1125" y="216" font-family="Consolas,monospace" font-size="10" letter-spacing="1" fill="#716B60">ПРИМЕР ДАННЫХ</text>
+  <rect x="72" y="252" width="1296" height="372" fill="#e0dacf" stroke="#918878" stroke-width="1"/>
+  <text x="104" y="294" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#716B60">СИНТЕТИЧЕСКАЯ СЦЕНА · FRAME LAB</text>
+  <text x="104" y="338" font-family="Segoe UI,Arial" font-size="28" font-weight="650" fill="#26241F">Проверка без игры</text>
+  <text x="104" y="371" font-family="Segoe UI,Arial" font-size="15" fill="#514D44">Фиксированная сцена с освещением и движущимися объектами.</text>
+  <text x="104" y="396" font-family="Segoe UI,Arial" font-size="15" fill="#514D44">Результат помогает сравнить настройки на одном ПК.</text>
+  <rect x="104" y="430" width="240" height="54" fill="#A74738"/>
+  <text x="224" y="464" text-anchor="middle" font-family="Segoe UI,Arial" font-size="16" font-weight="700" fill="#F5F0E6">Запустить тест · 30 с</text>
+  <text x="104" y="523" font-family="Segoe UI,Arial" font-size="13" fill="#716B60">Результат тестовой сцены не равен FPS в конкретной игре.</text>
+  <text x="104" y="576" font-family="Consolas,monospace" font-size="11" letter-spacing="1" fill="#416B4B">● ГОТОВ К ЗАМЕРУ</text>
   <g transform="translate(600 278)">
     <rect width="736" height="314" fill="url(#window)"/>
     <path d="M0 205 368 116 736 205v109H0z" fill="url(#ground)"/>
@@ -42,15 +42,15 @@
     <path d="M0 205 368 116 736 205" fill="none" stroke="#e9a16e" stroke-width="2" opacity=".8"/>
     <text x="24" y="32" font-family="Consolas,monospace" font-size="10" fill="#d4d1ca" letter-spacing="1.5">FRAME LAB TEST SCENE / FIXED CAMERA PATH</text>
   </g>
-  <rect x="72" y="658" width="628" height="170" fill="#f8f6f0" stroke="#cfc9b8"/>
-  <rect x="716" y="658" width="652" height="170" fill="#f8f6f0" stroke="#cfc9b8"/>
-  <text x="100" y="694" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#6b665b">ДО ИЗМЕНЕНИЙ</text>
+  <rect x="72" y="658" width="628" height="170" fill="#E0DACE" stroke="#cfc9b8"/>
+  <rect x="716" y="658" width="652" height="170" fill="#E0DACE" stroke="#cfc9b8"/>
+  <text x="100" y="694" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#716B60">ДО ИЗМЕНЕНИЙ</text>
   <text x="100" y="770" font-family="Segoe UI,Arial" font-size="64" font-weight="750" fill="#e8380d">118</text>
-  <text x="225" y="768" font-family="Segoe UI,Arial" font-size="20" fill="#141414">FPS</text>
-  <text x="350" y="757" font-family="Segoe UI,Arial" font-size="14" fill="#6b665b">1% low</text><text x="350" y="787" font-family="Segoe UI,Arial" font-size="22" font-weight="650" fill="#141414">82 FPS</text>
-  <text x="748" y="694" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#6b665b">ПОСЛЕ ИЗМЕНЕНИЙ</text>
+  <text x="225" y="768" font-family="Segoe UI,Arial" font-size="20" fill="#26241F">FPS</text>
+  <text x="350" y="757" font-family="Segoe UI,Arial" font-size="14" fill="#716B60">1% low</text><text x="350" y="787" font-family="Segoe UI,Arial" font-size="22" font-weight="650" fill="#26241F">82 FPS</text>
+  <text x="748" y="694" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#716B60">ПОСЛЕ ИЗМЕНЕНИЙ</text>
   <text x="748" y="770" font-family="Segoe UI,Arial" font-size="64" font-weight="750" fill="#e8380d">126</text>
-  <text x="873" y="768" font-family="Segoe UI,Arial" font-size="20" fill="#141414">FPS</text>
-  <text x="998" y="757" font-family="Segoe UI,Arial" font-size="14" fill="#6b665b">1% low</text><text x="998" y="787" font-family="Segoe UI,Arial" font-size="22" font-weight="650" fill="#141414">89 FPS</text>
-  <text x="1172" y="770" font-family="Segoe UI,Arial" font-size="16" font-weight="700" fill="#2f6b3c">+6.8%</text>
+  <text x="873" y="768" font-family="Segoe UI,Arial" font-size="20" fill="#26241F">FPS</text>
+  <text x="998" y="757" font-family="Segoe UI,Arial" font-size="14" fill="#716B60">1% low</text><text x="998" y="787" font-family="Segoe UI,Arial" font-size="22" font-weight="650" fill="#26241F">89 FPS</text>
+  <text x="1172" y="770" font-family="Segoe UI,Arial" font-size="16" font-weight="700" fill="#416B4B">+6.8%</text>
 </svg>

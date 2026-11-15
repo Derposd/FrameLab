@@ -17,9 +17,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="v:SwitchButton">
                     <Grid Width="44" Height="24" Background="Transparent">
-                        <Border x:Name="off" CornerRadius="12" Background="#2A2C35" BorderBrush="#474B57" BorderThickness="1" />
-                        <Border x:Name="on" CornerRadius="12" Background="{DynamicResource AccentGradient}" Opacity="0" />
-                        <Ellipse x:Name="thumb" Width="16" Height="16" Fill="White" Opacity="0.65" HorizontalAlignment="Left" Margin="4,0,0,0">
+                        <Border x:Name="off" CornerRadius="4" Background="#D4CDBF" BorderBrush="#BDB4A4" BorderThickness="1" />
+                        <Border x:Name="on" CornerRadius="4" Background="{DynamicResource AccentGradient}" Opacity="0" />
+                        <Ellipse x:Name="thumb" Width="16" Height="16" Fill="#716B60" Opacity="0.8" HorizontalAlignment="Left" Margin="4,0,0,0">
                             <Ellipse.RenderTransform>
                                 <TranslateTransform x:Name="shift" />
                             </Ellipse.RenderTransform>
@@ -27,6 +27,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOn" Value="True">
+                            <Setter TargetName="thumb" Property="Fill" Value="#F5F0E6" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -142,9 +143,9 @@
                     <LinearGradientBrush.RelativeTransform>
                         <TranslateTransform X="-1" />
                     </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="#15161D" Offset="0" />
-                    <GradientStop Color="#20222B" Offset="0.5" />
-                    <GradientStop Color="#15161D" Offset="1" />
+                    <GradientStop Color="#D4CDBF" Offset="0" />
+                    <GradientStop Color="#E3DDD1" Offset="0.5" />
+                    <GradientStop Color="#D4CDBF" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -212,7 +213,7 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="b" Property="BorderBrush" Value="#434757" />
+                                            <Setter TargetName="b" Property="BorderBrush" Value="#918878" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>

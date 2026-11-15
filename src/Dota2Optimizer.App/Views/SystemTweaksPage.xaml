@@ -3,84 +3,124 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:t="clr-namespace:Dota2Optimizer.Core.Tweaks;assembly=Dota2Optimizer.Core"
              xmlns:v="clr-namespace:Dota2Optimizer.App.Views">
-    <ScrollViewer>
-        <StackPanel Margin="{StaticResource Margin.Page}">
-            <TextBlock Text="WINDOWS" Style="{StaticResource Kicker}" />
-            <TextBlock Text="Твики Windows" Style="{StaticResource PageTitle}" />
-            <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,18"
-                       Text="Каждый пункт — отдельный переключатель. Перед включением показывается, что именно изменится, а копия прежних значений сохраняется: выключение возвращает их. Эффект и риск указаны честно; спорное выключено по умолчанию." />
+    <Grid Margin="36,28,40,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <Border Style="{StaticResource Hero}" v:Fx.Appear="True">
-                <DockPanel>
-                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button Content="Обновить" Tag="{StaticResource IconRefresh}" Style="{StaticResource SecondaryIcon}" Command="{Binding RefreshCommand}" />
-                        <Button Content="Включить рекомендуемые" Tag="{StaticResource IconBolt}" Style="{StaticResource PrimaryIcon}" Command="{Binding ApplyRecommendedCommand}" Margin="0" />
-                    </StackPanel>
-                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconSliders}" Margin="0,0,16,0" Width="44" Height="44" />
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Summary}" Style="{StaticResource H1}" />
-                        <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0"
-                                   Text="«Рекомендуемые» — только безопасные пункты без спорного эффекта. Всё отменяется здесь же или на вкладке «Откат»." />
-                    </StackPanel>
-                </DockPanel>
-            </Border>
+        <DockPanel Grid.Row="0" Margin="0,0,0,18" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="16,0,0,5">
+                <TextBlock Text="ОФЛАЙН" FontFamily="{StaticResource MonoFont}" FontSize="11" Foreground="{StaticResource Subtle}" />
+                <TextBlock Text=" · " FontFamily="{StaticResource MonoFont}" FontSize="11" Foreground="{StaticResource Subtle}" />
+                <TextBlock Text="БЕЗ ТЕЛЕМЕТРИИ" FontFamily="{StaticResource MonoFont}" FontSize="11" Foreground="{StaticResource Subtle}" />
+            </StackPanel>
+            <TextBlock Text="Спецификация изменений" FontFamily="{StaticResource DisplayFont}" FontSize="34" FontWeight="Bold"
+                       Foreground="{StaticResource Text}" TextTrimming="CharacterEllipsis" />
+        </DockPanel>
 
-            <Border Style="{StaticResource Card}" v:Fx.Appear="True">
-                <DockPanel>
-                    <Border DockPanel.Dock="Right" Style="{StaticResource SegmentHost}" VerticalAlignment="Center" Margin="16,0,0,0">
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton Style="{StaticResource Segment}" GroupName="profile" Content="Игры" IsChecked="{Binding IsGamesProfile, Mode=OneWay}" Command="{Binding GamesProfileCommand}" />
-                            <RadioButton Style="{StaticResource Segment}" GroupName="profile" Content="Работа" IsChecked="{Binding IsWorkProfile, Mode=OneWay}" Command="{Binding WorkProfileCommand}" />
-                        </StackPanel>
-                    </Border>
-                    <ContentControl Style="{StaticResource IconBadge}" Tag="{StaticResource IconSwap}" Margin="0,0,14,0" />
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Профиль одной кнопкой" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="{Binding ProfileText}" Style="{StaticResource Caption}" Margin="0,2,0,0" />
-                    </StackPanel>
-                </DockPanel>
-            </Border>
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="196" />
+                <ColumnDefinition Width="54" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="№" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" />
+            <TextBlock Grid.Column="1" Text="ИЗМЕНЕНИЕ" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" />
+            <TextBlock Grid.Column="2" Text="РИСК" Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="3" Text="ВКЛ." Style="{StaticResource Caption}" FontFamily="{StaticResource MonoFont}" HorizontalAlignment="Center" />
+            <Border Grid.ColumnSpan="4" BorderBrush="{StaticResource Text}" BorderThickness="0,0,0,2" VerticalAlignment="Bottom" />
+        </Grid>
 
-            <DockPanel Margin="0,4,0,14">
-                <TextBox DockPanel.Dock="Right" Width="240" Style="{StaticResource SearchBox}" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Tag="Поиск по твикам" />
-                <Border Style="{StaticResource SegmentHost}">
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Все" IsChecked="True" Command="{Binding FilterCommand}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Система" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Windows}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Видеокарта" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Gpu}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Интерфейс" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Interface}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Приватность" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Privacy}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Службы" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Services}" />
-                        <RadioButton Style="{StaticResource Segment}" GroupName="cat" Content="Сеть" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Network}" />
-                    </StackPanel>
+        <DockPanel Grid.Row="2" Margin="0,12,0,8" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="12,0,0,0">
+                <TextBox Width="175" Height="32" Style="{StaticResource SearchBox}"
+                         Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Tag="Поиск по изменениям" Margin="0,0,8,0" />
+                <Button Content="Обновить" Tag="{StaticResource IconRefresh}" Style="{StaticResource SecondaryIcon}" Command="{Binding RefreshCommand}" Margin="0" />
+            </StackPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Все" IsChecked="{Binding IsAll, Mode=OneWay}" Command="{Binding FilterCommand}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Система" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Windows}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Видеокарта" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Gpu}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Интерфейс" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Interface}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Приватность" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Privacy}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Службы" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Services}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="spec-cat" Content="Сеть" Command="{Binding FilterCommand}" CommandParameter="{x:Static t:TweakCategory.Network}" />
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+
+        <DockPanel Grid.Row="3" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Top">
+                <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding ShowUnsupported}" Content="{Binding UnsupportedText}" Margin="2,0,0,8" />
+                <Border Background="{StaticResource InsetBg}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="10,7" Margin="0,0,0,8"
+                        Visibility="{Binding Status, Converter={StaticResource NullToCollapsed}}">
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Style="{StaticResource Flat}" Content="Обновить" Command="{Binding RefreshCommand}" />
+                        <TextBlock Text="{Binding Status}" Style="{StaticResource Caption}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                    </DockPanel>
                 </Border>
-            </DockPanel>
-
-            <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding ShowUnsupported}" Content="{Binding UnsupportedText}" Margin="2,0,0,12" />
-
-            <Border Style="{StaticResource Inset}" Margin="0,0,0,14" Visibility="{Binding Status, Converter={StaticResource NullToCollapsed}}">
-                <TextBlock Text="{Binding Status}" Style="{StaticResource Caption}" />
-            </Border>
-
-            <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}">
-                <Border Style="{StaticResource Skeleton}" />
-                <Border Style="{StaticResource Skeleton}" />
-                <Border Style="{StaticResource Skeleton}" />
+                <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}">
+                    <Border Style="{StaticResource Skeleton}" /><Border Style="{StaticResource Skeleton}" /><Border Style="{StaticResource Skeleton}" />
+                </StackPanel>
             </StackPanel>
 
-            <ItemsControl ItemsSource="{Binding Groups}" Visibility="{Binding IsLoading, Converter={StaticResource NotVis}}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}}" Margin="0,0,0,10">
-                            <DockPanel Margin="2,8,4,10">
-                                <TextBlock DockPanel.Dock="Right" Text="{Binding Counter}" Style="{StaticResource Caption}" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Title}" Style="{StaticResource Section}" />
-                            </DockPanel>
-                            <ItemsControl ItemsSource="{Binding Visible}" ItemTemplate="{StaticResource TweakRowTemplate}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-    </ScrollViewer>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                          Visibility="{Binding IsLoading, Converter={StaticResource NotVis}}">
+                <ItemsControl ItemsSource="{Binding Groups}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}}">
+                                <DockPanel Margin="0,13,0,2">
+                                    <TextBlock DockPanel.Dock="Right" Text="{Binding Counter}" Style="{StaticResource Caption}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Title}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="SemiBold"
+                                               Foreground="{StaticResource Subtle}" />
+                                </DockPanel>
+                                <ItemsControl ItemsSource="{Binding Visible}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid MinHeight="74" ToolTip="{Binding Note}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="44" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="196" />
+                                                    <ColumnDefinition Width="54" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding RowNumber, StringFormat={}{0:00}}"
+                                                           FontFamily="{StaticResource MonoFont}" FontSize="12" Foreground="{StaticResource Subtle}"
+                                                           VerticalAlignment="Center" />
+                                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,8,10,8">
+                                                    <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontSize="19" FontWeight="SemiBold"
+                                                               Foreground="{StaticResource Text}" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding Explanation}" FontSize="13.5" Foreground="{StaticResource Muted}"
+                                                               Margin="0,3,0,0" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding Note}" FontSize="11.5" Foreground="{Binding NoteBrush}" Margin="0,3,0,0"
+                                                               TextWrapping="Wrap" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVis}}" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse Width="9" Height="9" Margin="0,0,10,0" StrokeThickness="2"
+                                                             Stroke="{Binding RiskValue, Converter={StaticResource RiskBrush}}" />
+                                                    <TextBlock Text="{Binding RiskLabel}" FontFamily="{StaticResource MonoFont}" FontSize="11"
+                                                               Foreground="{Binding RiskValue, Converter={StaticResource RiskBrush}}" TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <v:SwitchButton Grid.Column="3" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                IsOn="{Binding IsOn, Mode=OneWay}" IsBusy="{Binding IsBusy}" IsEnabled="{Binding CanToggle}"
+                                                                Command="{Binding ToggleCommand}" ToolTip="{Binding SwitchTip}" />
+                                                <Border Grid.ColumnSpan="4" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                                                        VerticalAlignment="Bottom" IsHitTestVisible="False" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
 </UserControl>

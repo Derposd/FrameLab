@@ -231,8 +231,11 @@ public sealed class MainViewModel : ObservableObject
     private GameWorkspace _current;
     private Section _section;
 
+    public ICommand HomeCommand { get; }
+
     public MainViewModel()
     {
+        HomeCommand = new RelayCommand(() => SelectedTab = HomeTab);
         var services = new AppServices();
         Dota = new GameWorkspace(services, Core.Game.Games.Dota2, i => SelectedTab = i);
         Cs2 = new GameWorkspace(services, Core.Game.Games.Cs2, i => SelectedTab = i);

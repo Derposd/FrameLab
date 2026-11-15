@@ -13,7 +13,7 @@ permissions:
 
 env:
   # Version of the build from main. A vX.Y.Z tag overrides it.
-  APP_VERSION: "1.6.1"
+  APP_VERSION: "1.6.2"
   PRESENTMON_VERSION: "2.6.0"
   INNOSETUP_VERSION: "6.4.3"
 

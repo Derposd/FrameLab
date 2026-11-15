@@ -15,6 +15,7 @@ public sealed class TweakRowVm : ObservableObject
     private TweakToggle? _state;
     private bool _busy;
     private MarkState _mark;
+    private int _rowNumber;
 
     public TweakRowVm(Tweak tweak, Func<TweakRowVm, Task> toggle)
     {
@@ -27,6 +28,11 @@ public sealed class TweakRowVm : ObservableObject
     public TweakToggle? State => _state;
     public TweakCategory Category => Tweak.Category;
     public string Title => Tweak.Title;
+    public int RowNumber
+    {
+        get => _rowNumber;
+        set => Set(ref _rowNumber, value);
+    }
     public string Explanation => Tweak.Explanation;
     public string Effect => "Эффект: " + Tweak.Effectiveness.Ru().ToLowerInvariant();
     public Effectiveness EffectValue => Tweak.Effectiveness;
@@ -166,8 +172,13 @@ public sealed class SystemTweaksViewModel : ObservableObject
     public SystemTweaksViewModel(AppServices services)
     {
         _s = services;
+        var rowNumber = 0;
         Groups = new ObservableCollection<TweakGroupVm>(Order.Select(c =>
-            new TweakGroupVm(c, SystemTweakCatalog.All.Where(t => t.Category == c).Select(t => new TweakRowVm(t, ToggleAsync)))));
+            new TweakGroupVm(c, SystemTweakCatalog.All.Where(t => t.Category == c).Select(t =>
+            {
+                var row = new TweakRowVm(t, ToggleAsync) { RowNumber = ++rowNumber };
+                return row;
+            }))));
         RefreshCommand = new AsyncCommand(() => LoadAsync(force: true), () => !IsLoading);
         ApplyRecommendedCommand = new AsyncCommand(ApplyRecommendedAsync, () => !IsLoading && Recommended().Any());
         FilterCommand = new RelayCommand(p => Only = p is TweakCategory c ? c : null);
@@ -265,6 +276,10 @@ public sealed class SystemTweaksViewModel : ObservableObject
         }
     }
 
+    public int ActiveCount => Groups.SelectMany(g => g.Rows).Count(r => r.IsOn && !r.IsUnsupported);
+    public int TotalCount => Groups.SelectMany(g => g.Rows).Count(r => !r.IsUnsupported);
+    public int RecommendedCount => Recommended().Count();
+
     public Task ActivateAsync() => _loaded ? Task.CompletedTask : LoadAsync(force: false);
 
     public async Task LoadAsync(bool force)
@@ -284,6 +299,7 @@ public sealed class SystemTweaksViewModel : ObservableObject
             if (!netGroup.Rows.Select(r => r.Tweak.Id).SequenceEqual(network.Select(t => t.Id)))
             {
                 netGroup.SetRows(network.Select(t => new TweakRowVm(t, ToggleAsync)));
+                RenumberRows();
             }
 
             var rows = Groups.SelectMany(g => g.Rows).ToList();
@@ -465,7 +481,19 @@ public sealed class SystemTweaksViewModel : ObservableObject
         }
 
         OnPropertyChanged(nameof(Summary));
+        OnPropertyChanged(nameof(ActiveCount));
+        OnPropertyChanged(nameof(TotalCount));
+        OnPropertyChanged(nameof(RecommendedCount));
         OnPropertyChanged(nameof(UnsupportedText));
         CommandManager.InvalidateRequerySuggested();
+    }
+
+    private void RenumberRows()
+    {
+        var number = 0;
+        foreach (var row in Groups.SelectMany(g => g.Rows))
+        {
+            row.RowNumber = ++number;
+        }
     }
 }

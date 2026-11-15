@@ -268,7 +268,7 @@ public sealed class MainViewModel : ObservableObject
         // The app always opens on the «ПК» section; the Dota 2 / CS2 chip returns to the game opened last time.
         _current = UiState.LastGame() == Core.Game.GameId.Cs2 ? Cs2 : Dota;
         SelectPc();
-        Live.Active = true; // the app opens on the home page
+        SelectedTab = SystemTweaksTab; // Always start in Windows / PC, with the shared navigation visible.
     }
 
     public HomeViewModel Home { get; }

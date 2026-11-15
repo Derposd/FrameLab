@@ -9,6 +9,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" Margin="0,0,0,18" LastChildFill="True">
@@ -122,5 +123,17 @@
                 </ItemsControl>
             </ScrollViewer>
         </DockPanel>
+        <Border Grid.Row="4" BorderBrush="{StaticResource Text}" BorderThickness="0,2,0,0" Padding="0,12,0,0" Margin="0,12,0,0">
+            <WrapPanel VerticalAlignment="Center">
+                <StackPanel Width="150" Margin="0,0,16,8">
+                    <TextBlock Text="ВКЛЮЧЕНО" Style="{StaticResource Kicker}" />
+                    <TextBlock FontSize="20" FontWeight="SemiBold"><Run Text="{Binding ActiveCount, Mode=OneWay}" /><Run Text=" из " /><Run Text="{Binding TotalCount, Mode=OneWay}" /></TextBlock>
+                </StackPanel>
+                <Button Style="{StaticResource Primary}" Command="{Binding ApplyRecommendedCommand}" Margin="0,0,12,8" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding RecommendedCount, StringFormat=Включить рекомендуемые ({0})}" Foreground="{StaticResource Bg}" />
+                </Button>
+                <Button Content="Вернуть всё как было" Command="{Binding DataContext.Rollback.RollbackAllCommand, RelativeSource={RelativeSource AncestorType=Window}}" Margin="0,0,0,8" VerticalAlignment="Center" />
+            </WrapPanel>
+        </Border>
     </Grid>
 </UserControl>

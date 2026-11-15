@@ -898,52 +898,7 @@
                                     <StackPanel IsItemsHost="True" Margin="0,2,0,8" />
                                 </ScrollViewer>
                             </DockPanel>
-                            <ScrollViewer x:Name="SpecificationPane" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                <Grid Margin="28,24,28,24">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Row="0">
-                                        <Button Content="← Все разделы" Style="{StaticResource Flat}" Command="{Binding HomeCommand}" HorizontalAlignment="Left" Padding="0,0,0,12" Margin="0" />
-                                        <TextBlock Text="ПРОФИЛЬ ИГРЫ" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource Subtle}" />
-                                        <StackPanel Margin="0,10,0,0">
-                                            <RadioButton Style="{StaticResource ProfileChoice}" Content="Dota 2" GroupName="profile-game"
-                                                         IsChecked="{Binding DataContext.IsDota, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Mode=TwoWay}" />
-                                            <RadioButton Style="{StaticResource ProfileChoice}" Content="Counter-Strike 2" GroupName="profile-game"
-                                                         IsChecked="{Binding DataContext.IsCs2, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Mode=TwoWay}" />
-                                            <RadioButton Style="{StaticResource ProfileChoice}" Content="GTA V · RP" GroupName="profile-game"
-                                                         IsChecked="{Binding DataContext.IsGta, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Mode=TwoWay}" />
-                                            <RadioButton Style="{StaticResource ProfileChoice}" Content="Windows и другие игры" FontSize="17" GroupName="profile-game"
-                                                         IsChecked="{Binding DataContext.IsPc, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Mode=TwoWay}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="1" Margin="0,20,0,18">
-                                        <TextBlock Text="ИЗМЕНЕНИЙ ВКЛЮЧЕНО" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource Subtle}" />
-                                        <Grid Margin="0,8,0,0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Text="{Binding SystemTweaks.ActiveCount, StringFormat={}{0:00}}" FontFamily="{StaticResource DisplayFont}" FontSize="120" FontWeight="ExtraBold" LineHeight="120" Foreground="{DynamicResource Accent}" />
-                                            <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="12,0,0,14">
-                                                <TextBlock Text="из" FontFamily="{StaticResource MonoFont}" FontSize="14" />
-                                                <TextBlock Text="{Binding SystemTweaks.TotalCount}" FontFamily="{StaticResource MonoFont}" FontSize="21" />
-                                            </StackPanel>
-                                        </Grid>
-                                        <TextBlock Text="текущее состояние Windows и графики на этом ПК" Style="{StaticResource MutedText}" Margin="0,4,0,0" FontSize="13" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="2">
-                                        <Button Style="{StaticResource SpecApplyButton}" Command="{Binding SystemTweaks.ApplyRecommendedCommand}">
-                                            <TextBlock Text="{Binding SystemTweaks.RecommendedCount, StringFormat=Включить рекомендуемые ({0})}" TextAlignment="Center" TextWrapping="Wrap" Foreground="{StaticResource Bg}" FontSize="16" />
-                                        </Button>
-                                        <Button Style="{StaticResource SpecUndoButton}" Margin="0,10,0,0" Content="Вернуть всё как было"
-                                                Command="{Binding Rollback.RollbackAllCommand}" />
-                                        <TextBlock Text="Каждый переключатель применяется отдельно. Исходные значения сохраняются, откат доступен в один клик." Style="{StaticResource MutedText}" FontSize="12.5" Margin="0,14,0,0" />
-                                    </StackPanel>
-                                </Grid>
-                            </ScrollViewer>
+
                             </Grid>
                         </Border>
                         <Grid Grid.Row="1" Grid.Column="1">
@@ -952,12 +907,7 @@
                             <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" TextElement.FontWeight="Normal" />
                         </Grid>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding SelectedTab}" Value="9">
-                            <Setter TargetName="NavigationPane" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="SpecificationPane" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

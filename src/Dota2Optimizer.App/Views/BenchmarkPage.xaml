@@ -27,7 +27,44 @@
             <TextBlock Text="ИНСТРУМЕНТЫ" Style="{StaticResource Kicker}" />
             <TextBlock Text="Бенчмарк до/после" Style="{StaticResource PageTitle}" />
             <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,18"
-                       Text="Замер FPS и времени кадра через Intel PresentMon (MIT, встроен) и пинга до 1.1.1.1 одновременно. Сделайте замер «до», примените изменения, повторите «после» в той же сцене — программа сравнит и честно скажет, если разница в пределах погрешности." />
+                       Text="Сравните производительность встроенной 3D-сцены без запуска игры или замерьте реальный FPS через PresentMon." />
+
+            <Border Style="{StaticResource Hero}" Margin="0,0,0,14">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="1.15*" /><ColumnDefinition Width="18" /><ColumnDefinition Width="0.85*" /></Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="СИНТЕТИЧЕСКАЯ СЦЕНА · FRAME LAB" Style="{StaticResource Overline}" />
+                        <TextBlock Text="Проверка без игры" Style="{StaticResource CardTitle}" Margin="0,5,0,4" />
+                        <TextBlock Style="{StaticResource MutedText}" TextWrapping="Wrap" Text="Одинаковая сцена с освещением и движущимися объектами. Полезна для сравнения настроек на одном ПК. Результат не равен FPS в Dota 2, CS2 или другой игре." />
+                        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                            <Button x:Name="SyntheticStart" Content="Запустить тест · 30 с" Tag="{StaticResource IconPlay}" Style="{StaticResource PrimaryIcon}" Click="SyntheticStart_Click" />
+                            <Button x:Name="SyntheticStop" Content="Остановить" Tag="{StaticResource IconStop}" Style="{StaticResource GhostIcon}" Click="SyntheticStop_Click" IsEnabled="False" />
+                            <TextBlock x:Name="SyntheticLabel" Text="До изменений" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0" />
+                        </StackPanel>
+                        <ProgressBar x:Name="SyntheticProgress" Style="{StaticResource Progress}" Maximum="1" Height="5" Margin="0,12,0,0" />
+                        <TextBlock x:Name="SyntheticStatus" Text="Подготовьте одинаковое состояние системы перед каждым прогоном." Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Border Grid.Column="2" Style="{StaticResource Inset}" Height="224" ClipToBounds="True">
+                        <Viewport3D x:Name="SyntheticViewport" ClipToBounds="True" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Margin="0,0,0,14" Visibility="{Binding HasSyntheticBefore, Converter={StaticResource BoolToVis}}">
+                <StackPanel>
+                    <TextBlock Text="РЕЗУЛЬТАТ СЦЕНЫ" Style="{StaticResource Overline}" />
+                    <WrapPanel Margin="0,6,0,0">
+                        <TextBlock Style="{StaticResource StatNumber}" FontSize="28" v:Fx.Format="0' FPS'" v:Fx.Number="{Binding SyntheticBefore.AvgFps}" />
+                        <TextBlock Style="{StaticResource Caption}" Margin="16,9,0,0"><Run Text="1% low " /><Run Text="{Binding SyntheticBefore.Low1Fps, StringFormat=0}" /></TextBlock>
+                        <TextBlock Style="{StaticResource Caption}" Margin="16,9,0,0"><Run Text="кадр " /><Run Text="{Binding SyntheticBefore.MedianFrameMs, StringFormat=0.0}" /><Run Text=" мс" /></TextBlock>
+                        <TextBlock Style="{StaticResource Caption}" Margin="16,9,0,0" Visibility="{Binding HasSyntheticAfter, Converter={StaticResource BoolToVis}}"><Run Text="после " /><Run Text="{Binding SyntheticAfter.AvgFps, StringFormat=0}" /><Run Text=" FPS" /></TextBlock>
+                    </WrapPanel>
+                    <TextBlock Text="Сравнение синтетической сцены — только ориентир. Для проверки конкретной игры используйте замер PresentMon ниже." Style="{StaticResource Caption}" Margin="0,5,0,0" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="ЗАМЕР В РЕАЛЬНОЙ ИГРЕ" Style="{StaticResource Kicker}" Margin="0,12,0,4" />
+            <TextBlock Style="{StaticResource PageSub}" Margin="0,0,0,12" Text="Игра должна быть запущена. Для честного сравнения используйте ту же сцену и настройки графики." />
 
             <Border Style="{StaticResource Hero}" v:Fx.Appear="True">
                 <StackPanel>

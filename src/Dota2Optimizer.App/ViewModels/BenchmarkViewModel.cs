@@ -35,10 +35,13 @@ public sealed class BenchmarkViewModel : ObservableObject
     private int _seconds = 60;
     private bool _isAfter;
     private bool _running;
+    private bool _syntheticRunning;
     private double _progress;
     private string _status = "Запустите игру, зайдите в одну и ту же сцену (тренировка, реплей, одно место на карте) и нажмите «Начать замер».";
     private BenchResult? _before;
     private BenchResult? _after;
+    private BenchResult? _syntheticBefore;
+    private BenchResult? _syntheticAfter;
     private string? _verdict;
     private CancellationTokenSource? _cts;
 
@@ -123,6 +126,38 @@ public sealed class BenchmarkViewModel : ObservableObject
         }
     }
 
+    public bool IsSyntheticRunning
+    {
+        get => _syntheticRunning;
+        private set => Set(ref _syntheticRunning, value);
+    }
+
+    /// <summary>Stores results from FrameLab's fixed synthetic 3D scene, separate from game captures.</summary>
+    public void SaveSyntheticRun(IReadOnlyList<double> frameTimes, int durationSeconds)
+    {
+        var stats = FrameStats.FromFrameTimes(frameTimes);
+        if (stats is null)
+        {
+            Status = "Сцена не успела отрисовать достаточно кадров. Повторите тест после прогрева.";
+            return;
+        }
+
+        var label = _isAfter ? "after" : "before";
+        var result = BenchResult.From("synthetic-scene-v1", label, stats, frameTimes, null, null) with
+        {
+            DurationSec = durationSeconds,
+        };
+        _store.Add(result);
+        (SyntheticBefore, SyntheticAfter) = _store.Pair("synthetic-scene-v1");
+        Status = $"Синтетическая сцена: {stats.AvgFps:0} FPS, 1% low {stats.OnePercentLowFps:0}. Это результат встроенного теста, не FPS в конкретной игре.";
+        _s.History.Add(new HistoryEntry(DateTime.Now, "Синтетический бенчмарк", label == "before" ? "До изменений" : "После изменений", Status));
+    }
+
+    public void SetSyntheticRunning(bool running)
+    {
+        IsSyntheticRunning = running;
+    }
+
     public double Progress
     {
         get => _progress;
@@ -157,6 +192,10 @@ public sealed class BenchmarkViewModel : ObservableObject
 
     public bool HasBefore => Before is not null;
     public bool HasAfter => After is not null;
+    public BenchResult? SyntheticBefore { get => _syntheticBefore; private set { Set(ref _syntheticBefore, value); OnPropertyChanged(nameof(HasSyntheticBefore)); } }
+    public BenchResult? SyntheticAfter { get => _syntheticAfter; private set { Set(ref _syntheticAfter, value); OnPropertyChanged(nameof(HasSyntheticAfter)); } }
+    public bool HasSyntheticBefore => SyntheticBefore is not null;
+    public bool HasSyntheticAfter => SyntheticAfter is not null;
 
     public string? Verdict
     {
@@ -167,6 +206,7 @@ public sealed class BenchmarkViewModel : ObservableObject
     public Task ActivateAsync()
     {
         RefreshGames();
+        (SyntheticBefore, SyntheticAfter) = _store.Pair("synthetic-scene-v1");
         return Task.CompletedTask;
     }
 

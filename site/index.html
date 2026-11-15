@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FrameLab — бесплатная оптимизация Dota 2, CS2 и GTA RP</title>
-<meta name="description" content="FrameLab — бесплатная программа для Windows: больше FPS и меньше фризов в Dota 2, Counter-Strike 2 и GTA V для RP-проектов (GTA5RP, Majestic RP). Оффлайн, не трогает игру, любое изменение отменяется в один клик.">
+<meta name="description" content="FrameLab — бесплатная программа для Windows: диагностика и оптимизация Dota 2, Counter-Strike 2 и GTA RP, синтетический 3D-бенчмарк и откат изменений. Оффлайн и без телеметрии.">
 <meta property="og:title" content="FrameLab — оптимизация Dota 2, CS2 и GTA RP">
-<meta property="og:description" content="Бесплатно, оффлайн, VAC-безопасно. Пресеты графики, параметры запуска, решения типичных проблем и монитор матча.">
+<meta property="og:description" content="Бесплатно, оффлайн, VAC-безопасно. Оптимизация игр, встроенная тестовая 3D-сцена, бенчмарк до/после и монитор матча.">
 <meta property="og:image" content="https://derposd.github.io/v60/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FrameLab">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://derposd.github.io/v60/">
-<meta name="theme-color" content="#09090c">
+<meta name="theme-color" content="#f3f0e8">
 <link rel="icon" href="img/favicon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "FrameLab", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "1.4.0", "inLanguage": "ru", "url": "https://derposd.github.io/v60/", "downloadUrl": "https://github.com/Derposd/v60/releases/latest/download/FrameLab-Setup.exe", "image": "https://derposd.github.io/v60/img/og.jpg", "screenshot": "https://derposd.github.io/v60/img/gta-modes.jpg", "description": "Бесплатная программа для Windows: больше FPS и меньше фризов в Dota 2, Counter-Strike 2 и GTA V для RP-проектов. Оффлайн, любое изменение отменяется в один клик.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Меня не забанят? Это безопасно для VAC?", "acceptedAnswer": {"@type": "Answer", "text": "Программа не вмешивается в процесс игры: не читает и не меняет её память, не встраивает свои модули. Она меняет только файлы настроек игры, параметры запуска в Steam и настройки Windows — то же самое, что можно сделать руками в меню."}}, {"@type": "Question", "name": "Почему Windows или браузер предупреждают о файле?", "acceptedAnswer": {"@type": "Answer", "text": "У программы нет платного сертификата подписи кода, поэтому SmartScreen показывает предупреждение для новых файлов. Скачивайте только по ссылкам с этой страницы — они ведут на официальную страницу релизов на GitHub."}}, {"@type": "Question", "name": "Насколько вырастет FPS?", "acceptedAnswer": {"@type": "Answer", "text": "Зависит от железа и от того, что было настроено раньше. Больше всего дают пресет графики, запуск на дискретной видеокарте в ноутбуках и отключение фоновой записи. Проверить эффект можно в «Мониторе матча»."}}, {"@type": "Question", "name": "Нужно ли сканировать ПК при каждом запуске?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. С версии 1.2.1 результат сохраняется: при следующем запуске программа сразу показывает диагноз, а Steam, игры и настройки Windows перепроверяет за секунду. Полное сканирование повторится само, если сменилась видеокарта, драйвер или процессор."}}, {"@type": "Question", "name": "Что делает кнопка «Оптимизировать»?", "acceptedAnswer": {"@type": "Answer", "text": "Применяет для всех установленных игр только то, что мастер выбрал бы сам: рекомендованные для вашего ПК настройки без спорных пунктов и без перезагрузки. Перед применением показывает список, после — отчёт и кнопку «Отменить всё». Программы не закрываются, ничего не удаляется и не разгоняется."}}, {"@type": "Question", "name": "Подходит для GTA5RP и Majestic RP? Не забанят за редукс?", "acceptedAnswer": {"@type": "Answer", "text": "Режимы графики меняют только settings.xml — то же, что меню настроек игры, поэтому работают на любом RP-сервере. Менеджер редуксов ставит только файлы графики и никогда не ставит код (скрипты, ASI, DLL, ReShade). Но правила модов у каждого проекта свои: паки, убирающие объекты, делающие текстуры прозрачными или дающие другое преимущество, считаются читом. Прочитайте правила проекта перед установкой."}}, {"@type": "Question", "name": "Как вернуть оригинальные файлы GTA V после редукса?", "acceptedAnswer": {"@type": "Answer", "text": "На вкладке «Редуксы» нажмите «Удалить (вернуть оригиналы)». Заменённые файлы игры при установке переносятся в папку .framelab внутри GTA V и возвращаются на место. Прерванная установка откатывается там же."}}, {"@type": "Question", "name": "Как всё вернуть, как было?", "acceptedAnswer": {"@type": "Answer", "text": "Рядом с каждым изменением есть кнопка «Отменить», а на вкладке «Откат» — «Откатить всё». Копии хранятся в %LOCALAPPDATA%\\Dota2Optimizer и не удаляются вместе с программой."}}, {"@type": "Question", "name": "Программа платная? Где подвох?", "acceptedAnswer": {"@type": "Answer", "text": "Бесплатно, без рекламы и регистрации. Код открыт на GitHub — можно проверить, что программа делает."}}]}]}</script>
 <!-- No analytics, no cookies, no third-party fonts: the page only loads files from this site. -->
@@ -32,6 +32,31 @@
   }
   html[data-game="dota"] { --a: #f0453a; --a2: #ff8a7a; --a3: #b5231b; --on-a: #fff; --a-rgb: 240,69,58; }
   html[data-game="gta"] { --a: #7c6cff; --a2: #a99cff; --a3: #4c3bd9; --on-a: #fff; --a-rgb: 124,108,255; }
+
+  /* FrameLab paper palette: quiet, typographic surfaces with thin ink rules. */
+  :root { --bg:#f3f0e8; --bg2:#ebe7dd; --panel:#f8f6f0; --panel2:#eeeae0; --line:#cfc9b8; --line2:#141414; --text:#141414; --muted:#4a463e; --subtle:#6b665b; }
+  body { background:var(--bg); }
+  nav { background:rgba(243,240,232,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+  .hero { padding-top:64px; }
+  .hero::before { background-image:radial-gradient(rgba(20,20,20,.10) 1px,transparent 1px); }
+  .hero::after { opacity:.12; }
+  .pill,.switch { background:var(--panel); border-color:var(--line); border-radius:4px; }
+  .pill b { border-radius:2px; }
+  .btn { border-radius:3px; }
+  .btn-primary { color:#f3f0e8; background:var(--a); box-shadow:none; }
+  .btn-primary:hover { box-shadow:0 6px 20px rgba(var(--a-rgb),.16); }
+  .btn-ghost,.switch { background:transparent; border:1px solid var(--line2); }
+  .btn-ghost:hover { background:var(--panel2); }
+  .switch button[aria-pressed="true"] { background:rgba(var(--a-rgb),.11); box-shadow:inset 0 0 0 1px rgba(var(--a-rgb),.55); }
+  .hud { background:var(--panel); border:1px solid var(--line2); border-radius:2px; box-shadow:10px 10px 0 rgba(20,20,20,.08); }
+  .hud-top,.hud-foot { border-color:var(--line); }
+  .hud-top .dots i { background:#cfc9b8; }
+  .strip { background:var(--panel); }
+  .feature,.card,.faq-item { border-radius:2px; }
+  .gallery { background:var(--panel); border:1px solid var(--line2); border-radius:2px; }
+  .gallery img { background:#e6e1d6; }
+  section { scroll-margin-top:84px; }
+  @media(max-width:720px) { .hero { padding-top:42px; } }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -453,22 +478,34 @@
   </div>
 </section>
 
+<section id="synthetic-benchmark" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div class="k">Бенчмарк</div><h2>Проверьте изменения <span class="acc">без запуска игры</span></h2></div>
+    <div class="feature rv" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center">
+      <div><h3>Одна сцена для повторяемого сравнения</h3><p>FrameLab отрисовывает встроенную 3D-сцену с одинаковой нагрузкой, измеряет FPS и 1% low и сохраняет результаты до и после. Не нужно искать карту или повторять маршрут в игре.</p><p><strong>Честное ограничение:</strong> синтетический результат сравнивает настройки на этом ПК и не предсказывает FPS конкретной игры. Частота монитора может ограничить показания. Для реальной игры остаётся замер PresentMon.</p></div>
+      <img src="img/benchmark-scene.svg" loading="lazy" width="1440" height="900" alt="Иллюстрация встроенной сцены и результата синтетического теста" style="border:1px solid var(--line2)">
+    </div>
+  </div>
+</section>
+
 <section id="screens" style="padding-top:0">
   <div class="wrap">
     <div class="head rv"><div class="k">Скриншоты</div><h2>Так выглядит <span class="acc">программа</span></h2></div>
     <div class="gallery rv">
       <div class="tabs" role="tablist">
-        <button role="tab" aria-selected="true" data-i="0">План оптимизации</button>
-        <button role="tab" aria-selected="false" data-i="1">Главная</button>
-        <button role="tab" aria-selected="false" data-i="2">GTA RP: режимы</button>
-        <button role="tab" aria-selected="false" data-i="3">GTA RP: для РП</button>
-        <button role="tab" aria-selected="false" data-i="4">Редуксы</button>
-        <button role="tab" aria-selected="false" data-i="5">Проблемы</button>
-        <button role="tab" aria-selected="false" data-i="6">Вылеты</button>
-        <button role="tab" aria-selected="false" data-i="7">Монитор матча</button>
+        <button role="tab" aria-selected="true" data-i="0">Синтетический тест</button>
+        <button role="tab" aria-selected="false" data-i="1">План оптимизации</button>
+        <button role="tab" aria-selected="false" data-i="2">Главная</button>
+        <button role="tab" aria-selected="false" data-i="3">GTA RP: режимы</button>
+        <button role="tab" aria-selected="false" data-i="4">GTA RP: для РП</button>
+        <button role="tab" aria-selected="false" data-i="5">Редуксы</button>
+        <button role="tab" aria-selected="false" data-i="6">Проблемы</button>
+        <button role="tab" aria-selected="false" data-i="7">Вылеты</button>
+        <button role="tab" aria-selected="false" data-i="8">Монитор матча</button>
       </div>
       <div class="stage">
-        <img class="on" src="img/cs2-plan.jpg" width="1600" height="1067" alt="План оптимизации CS2: пресеты графики и параметры запуска" data-cap="Шаг «План»: пресет под ваш профиль ПК, параметры запуска, настройки Windows. У каждого пункта — эффект и статус.">
+        <img class="on" src="img/benchmark-scene.svg" width="1440" height="900" alt="Синтетический бенчмарк FrameLab: встроенная фиксированная 3D-сцена и сравнение результатов до и после" data-cap="Новый синтетический бенчмарк: одна и та же встроенная 3D-сцена, FPS и 1% low. Это ориентир для сравнения на вашем ПК, а не обещание FPS в конкретной игре.">
+        <img src="img/cs2-plan.jpg" loading="lazy" width="1600" height="1067" alt="План оптимизации CS2: пресеты графики и параметры запуска" data-cap="Шаг «План»: пресет под ваш профиль ПК, параметры запуска, настройки Windows. У каждого пункта — эффект и статус.">
         <img src="img/cs2-home.jpg" loading="lazy" width="1600" height="1067" alt="Главная FrameLab: оптимизация в один клик" data-cap="«Главная»: оптимизация в один клик для всех установленных игр, состояние ПК, ускорение на время игры. Слева — переключатель Dota 2 / CS2 / GTA RP.">
         <img src="img/gta-modes.jpg" loading="lazy" width="1600" height="1067" alt="Режимы графики GTA V для RP-проектов" data-cap="GTA RP: режим под ваш ПК выбран заранее, видно, какой включён сейчас. Меняется только settings.xml, копия сохраняется.">
         <img src="img/gta-roleplay.jpg" loading="lazy" width="1600" height="1067" alt="Режимы «РП красиво» и «Гибрид»" data-cap="Два режима для РП: «РП красиво» — почти максимум без лишнего, «Гибрид» — красиво и без просадок. «Вернуть как было» — одной кнопкой.">

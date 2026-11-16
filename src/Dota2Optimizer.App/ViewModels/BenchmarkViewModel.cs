@@ -44,13 +44,35 @@ public sealed class BenchmarkViewModel : ObservableObject
     private BenchResult? _syntheticAfter;
     private string? _verdict;
     private CancellationTokenSource? _cts;
+    private ArenaRunSpec? _arena;
+    public string ArenaVerdict => ShareComparison.CanCompare(SyntheticBefore, SyntheticAfter)
+        ? BenchCompare.Verdict(BenchCompare.Deltas(SyntheticBefore!, SyntheticAfter!))
+        : "Для сравнения запишите «до» и «после» при одинаковом размере сцены.";
+
+    public void SelectArena(ArenaRunSpec spec)
+    {
+        _arena = spec;
+        (SyntheticBefore, SyntheticAfter) = _store.Pair(spec.Key);
+        OnPropertyChanged(nameof(ArenaVerdict));
+    }
+
+    public void ShowShareCard(bool synthetic)
+    {
+        if (IsRunning || IsSyntheticRunning) { Ui.Info("Сначала завершите замер."); return; }
+        var before = synthetic ? SyntheticBefore : Before;
+        var after = synthetic ? SyntheticAfter : After;
+        if (!ShareComparison.CanCompare(before, after)) { Ui.Info("Нужны два завершённых замера «до» и «после» одной сцены и одинаковой длительности."); return; }
+        new Views.ResultCardDialog(before!, after!, synthetic ? "FrameLab Arena" : SelectedGame?.Name ?? "Игра").ShowDialog();
+    }
+
+    private string? Hardware => _s.Snapshot is { } snapshot ? $"{snapshot.Cpu?.Name ?? "CPU не определён"} · {snapshot.PrimaryGpu?.Name ?? "GPU не определён"}" : null;
 
     public BenchmarkViewModel(AppServices services)
     {
         _s = services;
         _store = new BenchmarkStore(services.Fs, AppPaths.Benchmarks);
         RefreshGamesCommand = new RelayCommand(RefreshGames);
-        StartCommand = new AsyncCommand(RunAsync, () => !IsRunning && SelectedGame is not null);
+        StartCommand = new AsyncCommand(RunAsync, () => !IsRunning && !IsSyntheticRunning && SelectedGame is not null);
         CancelCommand = new RelayCommand(() => _cts?.Cancel(), () => IsRunning);
     }
 
@@ -98,6 +120,7 @@ public sealed class BenchmarkViewModel : ObservableObject
             if (value)
             {
                 _isAfter = false;
+                OnPropertyChanged(nameof(IsBefore));
                 OnPropertyChanged(nameof(IsAfter));
             }
         }
@@ -111,6 +134,7 @@ public sealed class BenchmarkViewModel : ObservableObject
             if (value)
             {
                 _isAfter = true;
+                OnPropertyChanged(nameof(IsAfter));
                 OnPropertyChanged(nameof(IsBefore));
             }
         }
@@ -133,7 +157,7 @@ public sealed class BenchmarkViewModel : ObservableObject
     }
 
     /// <summary>Stores results from FrameLab's fixed synthetic 3D scene, separate from game captures.</summary>
-    public void SaveSyntheticRun(IReadOnlyList<double> frameTimes, int durationSeconds)
+    public void SaveSyntheticRun(IReadOnlyList<double> frameTimes, ArenaRunSpec spec, string label)
     {
         var stats = FrameStats.FromFrameTimes(frameTimes);
         if (stats is null)
@@ -142,20 +166,21 @@ public sealed class BenchmarkViewModel : ObservableObject
             return;
         }
 
-        var label = _isAfter ? "after" : "before";
-        var result = BenchResult.From("synthetic-scene-v1", label, stats, frameTimes, null, null) with
+        var result = BenchResult.From(spec.Key, label, stats, frameTimes, null, null) with
         {
-            DurationSec = durationSeconds,
+            Conditions = spec.Description,
+            Hardware = Hardware,
         };
         _store.Add(result);
-        (SyntheticBefore, SyntheticAfter) = _store.Pair("synthetic-scene-v1");
-        Status = $"Синтетическая сцена: {stats.AvgFps:0} FPS, 1% low {stats.OnePercentLowFps:0}. Это результат встроенного теста, не FPS в конкретной игре.";
+        SelectArena(spec);
+        Status = $"Arena: {stats.AvgFps:0} FPS, 1% low {stats.OnePercentLowFps:0}. Это результат встроенного теста, не FPS в конкретной игре.";
         _s.History.Add(new HistoryEntry(DateTime.Now, "Синтетический бенчмарк", label == "before" ? "До изменений" : "После изменений", Status));
     }
 
     public void SetSyntheticRunning(bool running)
     {
         IsSyntheticRunning = running;
+        CommandManager.InvalidateRequerySuggested();
     }
 
     public double Progress
@@ -206,7 +231,7 @@ public sealed class BenchmarkViewModel : ObservableObject
     public Task ActivateAsync()
     {
         RefreshGames();
-        (SyntheticBefore, SyntheticAfter) = _store.Pair("synthetic-scene-v1");
+        if (_arena is not null) SelectArena(_arena);
         return Task.CompletedTask;
     }
 
@@ -326,7 +351,7 @@ public sealed class BenchmarkViewModel : ObservableObject
                 return;
             }
 
-            var result = BenchResult.From(game.Process, label, stats, frames, pingStats?.AvgMs, pingStats?.JitterMs);
+            var result = BenchResult.From(game.Process, label, stats, frames, pingStats?.AvgMs, pingStats?.JitterMs) with { Hardware = Hardware, Conditions = "PresentMon · " + game.Name };
             _store.Add(result);
             LoadPair();
             if (label == "before")

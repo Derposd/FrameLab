@@ -219,6 +219,10 @@ public sealed class MainViewModel : ObservableObject
     public const int BenchmarkTab = 15;
     public const int NetworkTab = 17;
     public const int RollbackTab = 18;
+    public const int PersonalProfilesTab = 21;
+    public const int GettingStartedTab = 22;
+    public AppServices Services { get; private set; } = null!;
+    public void GoToPcPage(int tab) { SelectPc(); SelectedTab = tab; }
 
     private enum Section
     {
@@ -232,11 +236,16 @@ public sealed class MainViewModel : ObservableObject
     private Section _section;
 
     public ICommand HomeCommand { get; }
+    public ICommand PersonalProfilesCommand { get; }
+    public ICommand GettingStartedCommand { get; }
 
     public MainViewModel()
     {
         HomeCommand = new RelayCommand(() => SelectedTab = HomeTab);
+        PersonalProfilesCommand = new RelayCommand(() => SelectedTab = PersonalProfilesTab);
+        GettingStartedCommand = new RelayCommand(() => SelectedTab = GettingStartedTab);
         var services = new AppServices();
+        Services = services;
         Dota = new GameWorkspace(services, Core.Game.Games.Dota2, i => SelectedTab = i);
         Cs2 = new GameWorkspace(services, Core.Game.Games.Cs2, i => SelectedTab = i);
         Gta = new GtaViewModel(services);

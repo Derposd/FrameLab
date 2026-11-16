@@ -2095,6 +2095,8 @@
                 </Border>
             </Grid>
         </TabItem>
+        <TabItem Header="Мои профили" Tag="{StaticResource IconSliders}"><v:PersonalProfilesPage /></TabItem>
+        <TabItem Header="С чего начать" Tag="{StaticResource IconStar}"><v:GettingStartedPage /></TabItem>
     </TabControl>
 
         <!-- Caption buttons over the top-right corner; the rest of the top strip drags the window. -->

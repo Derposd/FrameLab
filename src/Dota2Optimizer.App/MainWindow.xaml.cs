@@ -16,7 +16,11 @@ public partial class MainWindow : Window
         var vm = new MainViewModel();
         DataContext = vm;
         SourceInitialized += (_, _) => UseRoundCorners();
-        Loaded += async (_, _) => await vm.Home.LoadAsync();
+        Loaded += async (_, _) =>
+        {
+            if (!System.IO.File.Exists(Views.GettingStartedPage.Marker)) vm.SelectedTab = MainViewModel.GettingStartedTab;
+            await vm.Home.LoadAsync();
+        };
         Closed += (_, _) => vm.Shutdown();
         StateChanged += (_, _) =>
         {

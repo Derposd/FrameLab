@@ -17,8 +17,7 @@ m = re.search(r'APP_VERSION:\s*"(\d+\.\d+\.\d+)"', build)
 if not m:
     sys.exit("APP_VERSION not found in build.yml")
 version = m.group(1)
-# 1.3.0 -> 1.3, 1.2.1 stays 1.2.1
-short = version[:-2] if version.endswith(".0") else version
+short = version
 
 section = re.search(rf"^## Что нового в {re.escape(version)}\s*\n(.*?)(?=^## |\Z)", notes, re.M | re.S)
 current_notes = section.group(1) if section else ""

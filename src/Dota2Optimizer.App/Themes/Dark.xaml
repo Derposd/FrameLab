@@ -882,6 +882,10 @@
                                     <RadioButton Style="{StaticResource ProfileChoice}" Content="Dota 2" Height="40" FontSize="20" IsChecked="{Binding IsDota}" GroupName="game" />
                                     <RadioButton Style="{StaticResource ProfileChoice}" Content="Counter-Strike 2" Height="40" FontSize="20" IsChecked="{Binding IsCs2}" GroupName="game" />
                                     <RadioButton Style="{StaticResource ProfileChoice}" Content="GTA V · RP" Height="40" FontSize="20" IsChecked="{Binding IsGta}" GroupName="game" />
+                                    <WrapPanel Margin="0,14,0,0">
+                                        <Button Content="Мои профили" Style="{StaticResource Flat}" Padding="0,6,12,6" Command="{Binding PersonalProfilesCommand}" />
+                                        <Button Content="С чего начать" Style="{StaticResource Flat}" Padding="0,6,0,6" Command="{Binding GettingStartedCommand}" />
+                                    </WrapPanel>
                                 </StackPanel>
                                 <!-- PC card -->
                                 <Border DockPanel.Dock="Bottom" Margin="14,8,14,16" Padding="0,10" CornerRadius="0" Background="Transparent"

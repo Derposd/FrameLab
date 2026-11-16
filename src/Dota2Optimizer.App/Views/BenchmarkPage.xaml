@@ -25,34 +25,31 @@
     <ScrollViewer>
         <StackPanel Margin="{StaticResource Margin.Page}">
             <TextBlock Text="ИНСТРУМЕНТЫ" Style="{StaticResource Kicker}" />
-            <TextBlock Text="Бенчмарк до/после" Style="{StaticResource PageTitle}" />
+            <TextBlock Text="Проверьте изменения в деле" Style="{StaticResource PageTitle}" />
             <TextBlock Style="{StaticResource PageSub}" Margin="0,4,0,18"
                        Text="Сравните производительность встроенной 3D-сцены без запуска игры или замерьте реальный FPS через PresentMon." />
 
-            <Border Style="{StaticResource Hero}" Margin="0,0,0,14">
-                <Grid>
-                    <Grid.ColumnDefinitions><ColumnDefinition Width="0.9*" /><ColumnDefinition Width="28" /><ColumnDefinition Width="1.1*" /></Grid.ColumnDefinitions>
-                    <StackPanel>
-                        <TextBlock Text="СИНТЕТИЧЕСКАЯ СЦЕНА · FRAME LAB" Style="{StaticResource Overline}" />
-                        <TextBlock Text="Проверка без игры" Style="{StaticResource H1}" Margin="0,8,0,10" TextWrapping="Wrap" />
-                        <TextBlock Style="{StaticResource MutedText}" TextWrapping="Wrap" Text="Одинаковая сцена с освещением и движущимися объектами. Полезна для сравнения настроек на одном ПК. Результат не равен FPS в Dota 2, CS2 или другой игре." />
-                        <Button x:Name="SyntheticStart" Content="Запустить тест · 30 с" Tag="{StaticResource IconPlay}" Style="{StaticResource PrimaryIcon}" Click="SyntheticStart_Click" HorizontalAlignment="Left" Margin="0,20,0,4" />
-                        <WrapPanel>
-                            <Button x:Name="SyntheticStop" Content="Остановить" Tag="{StaticResource IconStop}" Style="{StaticResource GhostIcon}" Click="SyntheticStop_Click" IsEnabled="False" Margin="0" />
-                            <TextBlock x:Name="SyntheticLabel" Text="До изменений" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0" />
-                        </WrapPanel>
-                        <ProgressBar x:Name="SyntheticProgress" Style="{StaticResource Progress}" Maximum="1" Height="5" Margin="0,12,0,0" />
-                        <TextBlock x:Name="SyntheticStatus" Text="Подготовьте одинаковое состояние системы перед каждым прогоном." Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap" />
-                    </StackPanel>
-                    <Border Grid.Column="2" Background="#22252F" Padding="0" MinHeight="280" ClipToBounds="True">
-                        <Viewport3D x:Name="SyntheticViewport" ClipToBounds="True" />
-                    </Border>
+            <StackPanel Margin="0,0,0,22">
+                <DockPanel Margin="0,0,0,12"><TextBlock Text="FRAMELAB ARENA" Style="{StaticResource H1}" /><TextBlock Text="НОЧНОЙ ГОРОД / 01" Style="{StaticResource Caption}" HorizontalAlignment="Right" /></DockPanel>
+                <Grid Height="340" ClipToBounds="True">
+                    <Grid.Background><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#111728" Offset="0"/><GradientStop Color="#43536B" Offset="1"/></LinearGradientBrush></Grid.Background>
+                    <Viewport3D x:Name="SyntheticViewport" ClipToBounds="True" IsHitTestVisible="False" />
+                    <Border Background="#B018202D" VerticalAlignment="Top" Padding="16,12"><DockPanel><TextBlock x:Name="ArenaFps" DockPanel.Dock="Right" Text="ГОТОВ К ЗАМЕРУ" Foreground="#F5EEE2" FontFamily="Consolas" HorizontalAlignment="Right"/><TextBlock x:Name="ArenaChapter" Text="01 / НЕОНОВАЯ УЛИЦА" Foreground="#EAB698" FontFamily="Consolas"/></DockPanel></Border>
+                    <Border Background="#B018202D" VerticalAlignment="Bottom" Padding="16,10"><TextBlock x:Name="ArenaConditions" Foreground="#E2E8EF" FontSize="11" /></Border>
                 </Grid>
-            </Border>
+                <WrapPanel x:Name="ArenaLabels" Margin="0,16,0,8">
+                    <RadioButton Style="{StaticResource Segment}" GroupName="arena-label" Content="До изменений" IsChecked="{Binding IsBefore}" />
+                    <RadioButton Style="{StaticResource Segment}" GroupName="arena-label" Content="После изменений" IsChecked="{Binding IsAfter}" />
+                </WrapPanel>
+                <WrapPanel><Button x:Name="SyntheticStart" Content="Запустить Arena · 30 с" Tag="{StaticResource IconPlay}" Style="{StaticResource PrimaryIcon}" Click="SyntheticStart_Click"/><Button x:Name="SyntheticStop" Content="Остановить" Tag="{StaticResource IconStop}" Style="{StaticResource GhostIcon}" Click="SyntheticStop_Click" IsEnabled="False"/><TextBlock x:Name="SyntheticLabel" Text="До изменений" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0"/></WrapPanel>
+                <ProgressBar x:Name="SyntheticProgress" Style="{StaticResource Progress}" Maximum="1" Height="5" Margin="0,12,0,0"/>
+                <TextBlock x:Name="SyntheticStatus" Text="3 секунды прогрева → 30 секунд одного маршрута. Оставьте окно активным и не меняйте его размер." Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap"/>
+                <TextBlock Text="Это синтетическая WPF-сцена: показатель может ограничиваться частотой монитора и не предсказывает FPS в игре. Сравниваются только замеры одинакового размера и версии сцены." Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap"/>
+            </StackPanel>
 
             <Border Style="{StaticResource Card}" Margin="0,0,0,14" Visibility="{Binding HasSyntheticBefore, Converter={StaticResource BoolToVis}}">
                 <StackPanel>
-                    <TextBlock Text="РЕЗУЛЬТАТ СЦЕНЫ" Style="{StaticResource Overline}" />
+                    <TextBlock Text="РЕЗУЛЬТАТ ARENA" Style="{StaticResource Overline}" /><Button Content="Карточка результата" Style="{StaticResource {x:Type Button}}" Click="ShareArena_Click" HorizontalAlignment="Left" Margin="0,12,0,8"/><TextBlock Text="{Binding ArenaVerdict}" Style="{StaticResource MutedText}" Margin="0,6,0,12"/>
                     <WrapPanel Margin="0,6,0,0">
                         <TextBlock Style="{StaticResource StatNumber}" FontSize="28" v:Fx.Format="0' FPS'" v:Fx.Number="{Binding SyntheticBefore.AvgFps}" />
                         <TextBlock Style="{StaticResource Caption}" Margin="16,9,0,0"><Run Text="1% low " /><Run Text="{Binding SyntheticBefore.Low1Fps, StringFormat=0}" /></TextBlock>
@@ -63,6 +60,7 @@
                 </StackPanel>
             </Border>
 
+            <Button Content="Карточка замера игры" Style="{StaticResource {x:Type Button}}" Click="ShareGame_Click" HorizontalAlignment="Left" Margin="0,0,0,14"/>
             <TextBlock Text="ЗАМЕР В РЕАЛЬНОЙ ИГРЕ" Style="{StaticResource Kicker}" Margin="0,12,0,4" />
             <TextBlock Style="{StaticResource PageSub}" Margin="0,0,0,12" Text="Игра должна быть запущена. Для честного сравнения используйте ту же сцену и настройки графики." />
 

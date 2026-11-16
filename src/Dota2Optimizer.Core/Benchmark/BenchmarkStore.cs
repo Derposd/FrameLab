@@ -12,6 +12,8 @@ public sealed record BenchResult
 
     /// <summary>"before" or "after".</summary>
     public string Label { get; init; } = "before";
+    public string? Conditions { get; init; }
+    public string? Hardware { get; init; }
 
     public double AvgFps { get; init; }
     public double Low1Fps { get; init; }

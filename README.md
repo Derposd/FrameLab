@@ -5,15 +5,15 @@
 ![FrameLab 1.7.1 — стартовая страница Windows · ПК с четырьмя профилями и общим меню](docs/images/framelab-1.7.1.png)
 
 <p align="center">
-  <a href="https://github.com/Derposd/v60/releases/latest/download/FrameLab-Setup.exe"><img alt="Скачать установщик" src="https://img.shields.io/badge/%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D1%89%D0%B8%D0%BA-F2380B?style=for-the-badge" height="36"></a>
-  <a href="https://github.com/Derposd/v60/releases/latest/download/FrameLab.exe"><img alt="Portable" src="https://img.shields.io/badge/Portable-292824?style=for-the-badge" height="36"></a>
-  <a href="https://derposd.github.io/v60/"><img alt="Сайт" src="https://img.shields.io/badge/%D0%A1%D0%B0%D0%B9%D1%82-356978?style=for-the-badge" height="36"></a>
-  <a href="https://github.com/Derposd/v60/releases"><img alt="Все версии" src="https://img.shields.io/badge/%D0%92%D1%81%D0%B5%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-59564F?style=for-the-badge" height="36"></a>
+  <a href="https://github.com/Derposd/FrameLab/releases/latest/download/FrameLab-Setup.exe"><img alt="Скачать установщик" src="https://img.shields.io/badge/%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D1%89%D0%B8%D0%BA-F2380B?style=for-the-badge" height="36"></a>
+  <a href="https://github.com/Derposd/FrameLab/releases/latest/download/FrameLab.exe"><img alt="Portable" src="https://img.shields.io/badge/Portable-292824?style=for-the-badge" height="36"></a>
+  <a href="https://derposd.github.io/FrameLab/"><img alt="Сайт" src="https://img.shields.io/badge/%D0%A1%D0%B0%D0%B9%D1%82-356978?style=for-the-badge" height="36"></a>
+  <a href="https://github.com/Derposd/FrameLab/releases"><img alt="Все версии" src="https://img.shields.io/badge/%D0%92%D1%81%D0%B5%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-59564F?style=for-the-badge" height="36"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Derposd/v60/releases"><img alt="Всего скачиваний файлов релизов" src="https://img.shields.io/github/downloads/Derposd/v60/total?style=for-the-badge&amp;label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&amp;color=F2380B&amp;labelColor=292824&amp;cacheSeconds=3600"></a>
-  <a href="https://github.com/Derposd/v60/releases/latest"><img alt="Последняя версия" src="https://img.shields.io/github/v/release/Derposd/v60?style=for-the-badge&amp;label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&amp;color=356978&amp;labelColor=292824"></a>
+  <a href="https://github.com/Derposd/FrameLab/releases"><img alt="Всего скачиваний файлов релизов" src="https://img.shields.io/github/downloads/Derposd/FrameLab/total?style=for-the-badge&amp;label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&amp;color=F2380B&amp;labelColor=292824&amp;cacheSeconds=3600"></a>
+  <a href="https://github.com/Derposd/FrameLab/releases/latest"><img alt="Последняя версия" src="https://img.shields.io/github/v/release/Derposd/FrameLab?style=for-the-badge&amp;label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&amp;color=356978&amp;labelColor=292824"></a>
   <img alt="Windows 10 и 11, x64" src="https://img.shields.io/badge/Windows-10%20%7C%2011%20%C2%B7%20x64-59564F?style=for-the-badge&amp;labelColor=292824">
 </p>
 
@@ -21,7 +21,7 @@
 
 Бесплатно, без регистрации, рекламы, телеметрии и автоматических обновлений приложения. Прирост FPS зависит от игры и компьютера — проверяйте результат замером.
 
-[Быстрый старт](#быстрый-старт) · [Возможности](#где-что-находится) · [Откат](#откат-и-данные) · [Помощь](#помощь-и-документация) · [Сообщить о проблеме](https://github.com/Derposd/v60/issues/new)
+[Быстрый старт](#быстрый-старт) · [Возможности](#где-что-находится) · [Откат](#откат-и-данные) · [Помощь](#помощь-и-документация) · [Сообщить о проблеме](https://github.com/Derposd/FrameLab/issues/new)
 
 ## Что нового в 1.7.1
 
@@ -30,7 +30,7 @@
 - Счётчик включённых настроек, рекомендации и общий откат находятся внизу страницы твиков. При переходе между разделами боковое меню сохраняется.
 - В версии 1.7 интерфейс переработан в стиле спецификации: тёплый светлый фон, крупные заголовки, разделители и квадратные переключатели.
 
-Подробности — в [описании релиза 1.7.1](https://github.com/Derposd/v60/releases/tag/v1.7.1).
+Подробности — в [описании релиза 1.7.1](https://github.com/Derposd/FrameLab/releases/tag/v1.7.1).
 
 ## Быстрый старт
 
@@ -92,8 +92,8 @@ FrameLab не обещает одинаковый эффект от твиков
 
 ## Помощь и документация
 
-- [Сообщить об ошибке или предложить функцию](https://github.com/Derposd/v60/issues/new). Укажите версию FrameLab, сборку Windows, профиль игры, шаги и ожидаемый результат. Если прикладываете лог, проверьте его на личные данные и пути.
-- [FPS в GTA RP](https://derposd.github.io/v60/gta-5-rp/) · [Установка редукса](https://derposd.github.io/v60/reduksy-gta-5-rp/) · [Задержка в CS2](https://derposd.github.io/v60/cs2-input-lag/) · [FPS в Dota 2](https://derposd.github.io/v60/dota-2-fps/).
+- [Сообщить об ошибке или предложить функцию](https://github.com/Derposd/FrameLab/issues/new). Укажите версию FrameLab, сборку Windows, профиль игры, шаги и ожидаемый результат. Если прикладываете лог, проверьте его на личные данные и пути.
+- [FPS в GTA RP](https://derposd.github.io/FrameLab/gta-5-rp/) · [Установка редукса](https://derposd.github.io/FrameLab/reduksy-gta-5-rp/) · [Задержка в CS2](https://derposd.github.io/FrameLab/cs2-input-lag/) · [FPS в Dota 2](https://derposd.github.io/FrameLab/dota-2-fps/).
 - [Сборка и структура проекта](docs/BUILD.md).
 - [Проверки и сценарии тестирования](docs/TESTING.md).
 - [Сторонние компоненты и лицензии](THIRD-PARTY-NOTICES.md).

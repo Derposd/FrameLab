@@ -238,12 +238,14 @@ public sealed class MainViewModel : ObservableObject
     public ICommand HomeCommand { get; }
     public ICommand PersonalProfilesCommand { get; }
     public ICommand GettingStartedCommand { get; }
+    public ICommand DiagnosticsCommand { get; }
 
     public MainViewModel()
     {
         HomeCommand = new RelayCommand(() => SelectedTab = HomeTab);
         PersonalProfilesCommand = new RelayCommand(() => SelectedTab = PersonalProfilesTab);
         GettingStartedCommand = new RelayCommand(() => SelectedTab = GettingStartedTab);
+        DiagnosticsCommand = new RelayCommand(() => SelectedTab = 23);
         var services = new AppServices();
         Services = services;
         Dota = new GameWorkspace(services, Core.Game.Games.Dota2, i => SelectedTab = i);

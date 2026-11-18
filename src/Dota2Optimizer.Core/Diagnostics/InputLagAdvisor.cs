@@ -14,15 +14,17 @@ public static class InputLagAdvisor
     private const string VSyncKey = "setting.mat_vsync";
 
     /// <summary>V-Sync as the game's video config says: true = on, false = off, null = unknown (no config or no such key).</summary>
-    public static bool? ReadVSync(IFileSystem fs, SteamInfo steam)
+    public static bool? ReadVSync(IFileSystem fs, SteamInfo steam) => ReadFlag(fs, steam, VSyncKey);
+
+    public static bool? ReadFlag(IFileSystem fs, SteamInfo steam, string key)
     {
         foreach (var path in steam.VideoConfigPaths)
         {
             try
             {
-                if (fs.FileExists(path) && VideoConfig.Parse(fs.ReadAllText(path)).Get(VSyncKey) is { } v)
+                if (fs.FileExists(path) && VideoConfig.Parse(fs.ReadAllText(path)).Get(key) is { } v)
                 {
-                    return v.Trim() != "0";
+                    return v.Trim() switch { "0" => false, "1" => true, _ => null };
                 }
             }
             catch (IOException)

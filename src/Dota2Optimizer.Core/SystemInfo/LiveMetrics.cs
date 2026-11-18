@@ -86,7 +86,9 @@ public sealed class LiveMetrics : IDisposable
                 return null;
             }
 
-            return Math.Clamp(_gpu.GroupBy(kv => Luid(kv.Key)).Max(g => g.Sum(kv => Safe(kv.Value))), 0, 100);
+            var groups = _gpu.Select(kv => (Id: Luid(kv.Key), Value: Safe(kv.Value)))
+                .Where(s => s.Value.HasValue).GroupBy(s => s.Id).ToArray();
+            return groups.Length == 0 ? null : Math.Clamp(groups.Max(g => g.Sum(s => s.Value!.Value)), 0, 100);
         }
         catch (Exception ex) when (ex is InvalidOperationException or UnauthorizedAccessException or System.ComponentModel.Win32Exception)
         {
@@ -100,7 +102,7 @@ public sealed class LiveMetrics : IDisposable
         return i < 0 ? instance : instance.Substring(i, Math.Min(27, instance.Length - i));
     }
 
-    private static float Safe(PerformanceCounter c)
+    private static float? Safe(PerformanceCounter c)
     {
         try
         {
@@ -108,7 +110,7 @@ public sealed class LiveMetrics : IDisposable
         }
         catch (InvalidOperationException)
         {
-            return 0;
+            return null;
         }
     }
 

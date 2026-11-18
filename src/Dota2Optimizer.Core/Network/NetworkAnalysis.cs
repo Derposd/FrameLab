@@ -23,7 +23,7 @@ public sealed record PingStats(int Sent, int Received, double LossPercent, doubl
             return new PingStats(sent, 0, loss, null, null, null, null);
         }
 
-        double? jitter = ok.Count < 2 ? 0 : ok.Zip(ok.Skip(1), (a, b) => Math.Abs(b - a)).Average();
+        double? jitter = ok.Count < 2 ? null : ok.Zip(ok.Skip(1), (a, b) => Math.Abs(b - a)).Average();
         return new PingStats(sent, ok.Count, loss, ok.Average(), ok.Min(), ok.Max(), jitter);
     }
 

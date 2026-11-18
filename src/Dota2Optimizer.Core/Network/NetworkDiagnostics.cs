@@ -57,7 +57,7 @@ public sealed class NetworkDiagnostics
         return !string.IsNullOrWhiteSpace(value);
     }
 
-    public static async Task<PingStats> PingAsync(string host, int count, CancellationToken ct, int timeoutMs = 1000, int intervalMs = 250)
+    public static async Task<PingStats> PingAsync(string host, int count, CancellationToken ct, int timeoutMs = 1000, int intervalMs = 250, Action<long?>? sample = null)
     {
         var rtts = new List<long?>();
         using var ping = new Ping();
@@ -73,9 +73,11 @@ public sealed class NetworkDiagnostics
                 rtts.Add(null);
             }
 
+            sample?.Invoke(rtts[^1]);
             await Task.Delay(intervalMs, ct).ConfigureAwait(false);
         }
 
+        ct.ThrowIfCancellationRequested();
         return PingStats.From(rtts);
     }
 

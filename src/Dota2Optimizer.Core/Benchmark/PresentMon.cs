@@ -129,9 +129,30 @@ public sealed class FpsCapture
     /// <summary>Starts a capture of a fixed length (the benchmark uses 30–120 s).</summary>
     public static FpsCapture Start(string presentMon, string exeName, int seconds, string filePrefix, string session)
     {
+        lock (StartGate)
+        {
+            if (Active is { HasExited: false })
+                return new FpsCapture("", "", exeName) { StartError = "Уже идёт запись кадров. Дождитесь её завершения." };
+            var capture = StartCore(presentMon, exeName, seconds, filePrefix, session);
+            Volatile.Write(ref _active, capture);
+            return capture;
+        }
+    }
+
+    private static readonly object StartGate = new();
+    private static FpsCapture? _active;
+    public static FpsCapture? Active => Volatile.Read(ref _active);
+
+    private static FpsCapture StartCore(string presentMon, string exeName, int seconds, string filePrefix, string session)
+    {
         var dir = PresentMonTool.CaptureFolder;
         var stamp = DateTime.Now.ToString("yyyyMMdd-HHmmss", System.Globalization.CultureInfo.InvariantCulture);
         var capture = new FpsCapture(Path.Combine(dir, $"{filePrefix}-{stamp}.csv"), Path.Combine(dir, $"{filePrefix}-{stamp}.log"), exeName);
+        if (!File.Exists(presentMon))
+        {
+            capture.StartError = "Исполняемый файл PresentMon недоступен.";
+            return capture;
+        }
         try
         {
             Directory.CreateDirectory(dir);
@@ -143,7 +164,7 @@ public sealed class FpsCapture
         }
 
         var args = $"--process_name {exeName} --output_file \"{capture.CsvPath}\" --timed {seconds} --terminate_after_timed " +
-                   $"--terminate_on_proc_exit --stop_existing_session --session_name {session} --no_console_stats";
+                   $"--terminate_on_proc_exit --session_name {session} --no_console_stats";
         Log.Info($"Запуск PresentMon: {presentMon} {args}");
         try
         {

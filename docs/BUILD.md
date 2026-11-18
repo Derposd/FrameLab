@@ -22,7 +22,7 @@ Invoke-WebRequest 'https://raw.githubusercontent.com/GameTechDev/PresentMon/v2.6
 
 dotnet test tests/Dota2Optimizer.Tests -c Release
 dotnet publish src/Dota2Optimizer.App -c Release -r win-x64 -o artifacts/publish
-iscc /DAppVersion=1.7.1 installer/Dota2Optimizer.iss
+iscc /DAppVersion=2.0.0 installer/Dota2Optimizer.iss
 ```
 
 `iscc` должен быть доступен в PATH; иначе укажите полный путь к `ISCC.exe`.
